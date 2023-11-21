@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage - Catalogo Auto</title>
+    <link rel="stylesheet" href="stile.css"> <!-- Assicurati che il percorso sia corretto -->
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-logo">ProgettoTSW</div>
+        <ul class="navbar-links">
+            <li class="active"><a href="#home">Vai alla home</a></li>
+            <li class="navbar-dropdown">
+                <a href="#catalogo">Contenuti</a>
+                <div class="dropdown-content">
+                    <a href="#popular">Più Popolari</a>
+                    <a href="#new">Nuovi Arrivi</a>
+                </div>
+            </li>
+        </ul>
+        <a href="registrazione.html" class="button registrati">Accedi o registrati</a>
+    </div>
+    
+    <main>
+        <section id="home">
+            <h2>Benvenuti al Progetto di Eligio</h2>
+            <p>Scoprite i modelli più recenti e popolari nel nostro catalogo.</p>
+            <!-- Altri contenuti possono essere aggiunti qui -->
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Catalogo Auto</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    var dropdowns = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdowns.forEach(function (dropdown) {
+        dropdown.addEventListener('mouseenter', function () {
+            var dropdownMenu = this.nextElementSibling;
+            dropdownMenu.style.display = 'block';
+        });
+
+        dropdown.addEventListener('mouseleave', function () {
+            var dropdownMenu = this.nextElementSibling;
+            dropdownMenu.style.display = 'none';
+        });
+    });
+});
+    </script>
+</body>
+</html>

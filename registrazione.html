@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Login / Registrazione</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .input-group label {
+            display: block;
+            text-align: left;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .action-button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff; /* Bootstrap primary color */
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .separator::before {
+            margin-right: .25em;
+        }
+
+        .separator::after {
+            margin-left: .25em;
+        }
+
+        .separator-text {
+            padding: 0 5px;
+        }
+
+        .link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: .9em;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .footer-text {
+            text-align: center;
+            font-size: .8em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Effettua il login o registrati</h2>
+        
+        <div class="form-section">
+            <p>Sei già registrato? Accedi:</p>
+            <div class="input-group">
+                <label for="login-email">Indirizzo email:</label>
+                <input type="email" id="login-email" placeholder="Inserisci la tua email">
+            </div>
+            <div class="input-group">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" placeholder="Inserisci la tua password">
+            </div>
+            <button class="action-button">Login</button>
+        </div>
+        
+        <div class="separator"><span class="separator-text">Oppure</span></div>
+        
+        <div class="form-section">
+            <p>Non sei ancora registrato? Registrati:</p>
+            <div class="input-group">
+                <label for="register-username">Nome utente: *</label>
+                <input type="text" id="register-username" placeholder="Scegli un nome utente">
+            </div>
+            <div class="input-group">
+                <label for="register-email">Indirizzo email: *</label>
+                <input type="email" id="register-email" placeholder="Inserisci la tua email">
+            </div>
+            <div class="input-group">
+                <label for="register-password">Password: *</label>
+                <input type="password" id="register-password" placeholder="Crea una password">
+                <input type="password" placeholder="Ripeti la password">
+            </div>
+            <button class="action-button">Crea un account</button>
+        </div>
+        
+        <p class="footer-text">
+            Creando un account acconsenti al trattamento dei dati personali come previsto dal 
+            <a href="https://www.garanteprivacy.it/documents/10160/0/Codice+in+materia+di+protezione+dei+dati+personali+%28Testo+coordinato%29" class="link">codice in materia di protezione dei dati personali</a>.
+        </p>
+    </div>
+</body>
+</html>
