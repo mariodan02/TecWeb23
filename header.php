@@ -6,11 +6,12 @@
 <title>Header Esempio</title>
 <style>
   .header-container {
-    background-color: #333; /* Sostituisci con il colore esatto del tuo background */
+    background-color: #221711; /* Sostituisci con il colore esatto del tuo background */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    border: solid #FDF6DC 2px;
   }
 
   .logo {
@@ -59,6 +60,7 @@
   <ul class="navigation">
     <li><a href="#">Homepage</a></li>  /* Sistemare con giusto collegamento */
     <li><a href="#">Catalogo</a></li>
+    <li><a href="#">Chi Siamo</a></li>
     <!-- Altre voci di navigazione se necessario -->
   </ul>
   <a href="registrazione.php" class="login-button">Login/Registrati</a>

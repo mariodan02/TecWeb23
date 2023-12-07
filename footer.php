@@ -6,11 +6,12 @@
 <title>Footer Esempio</title>
 <style>
   .footer-container {
-    background-color: #333; /* Sostituisci con il colore esatto del tuo background */
-    color: white; /* Sostituisci con il colore esatto del tuo testo */
+    clear: both;
+    background-color: #221711; /* Sostituisci con il colore esatto del tuo background */
+    color: #FDF6DC; /* Sostituisci con il colore esatto del tuo testo */
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
     padding: 10px;
     font-size: 16px; /* Regola in base alle tue preferenze */
   }
@@ -21,7 +22,7 @@
   }
 
   .footer-logo img {
-    max-width: 50px; /* Regola in base alle dimensioni del tuo logo */
+    max-width: 70px; /* Regola in base alle dimensioni del tuo logo */
   }
 
   .footer-text {
