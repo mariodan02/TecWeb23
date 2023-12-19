@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Accedi - WikiCar Vintage</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pirata+One&display=swap">
 <script src="database.js" defer></script>
 </head>
 <header>

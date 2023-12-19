@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+  font-family: 'Pirata One', cursive; /* Utilizza il font Pirata One per il testo del corpo */
     background-color: #221711;
   }
   
@@ -25,7 +25,7 @@ body {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #221711;
     border-radius: 4px;
   }
   
@@ -39,8 +39,8 @@ body {
     margin: 10px 0;
     border: none;
     border-radius: 4px;
-    background-color: #333;
-    color: white;
+    background-color: #221711;
+    color: #FDF6DC;
   }
   
   .social-login {
@@ -63,6 +63,6 @@ body {
   
   .branding img {
     max-width: 100%;
-    height: auto;
+    height:fit-content;
   }
   
