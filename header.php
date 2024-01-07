@@ -58,7 +58,7 @@
     <img src="wikicar-logo.png" alt="Wikicar Logo">
   </div>
   <ul class="navigation">
-    <li><a href="#">Homepage</a></li>  /* Sistemare con giusto collegamento */
+    <li><a href="#">Homepage</a></li> 
     <li><a href="#">Catalogo</a></li>
     <li><a href="#">Chi Siamo</a></li>
     <!-- Altre voci di navigazione se necessario -->
