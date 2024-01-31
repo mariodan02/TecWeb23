@@ -15,14 +15,11 @@ function validateFormSignUp() {
         return false;
     }
 
-
     // Verifica che il campo username non sia vuoto
     if (username === '') {
         alert("Il campo 'username' deve essere compilato.");
         return false;
     }
-
-
-
+    
     return true;
 }

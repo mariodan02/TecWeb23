@@ -58,18 +58,10 @@
     </video>
 
     <header>
-    <img src="/img/other-img/logo bianco.png" alt="logo"></img>
-            <nav>
-                <ul>
-                    <li><a href="#Testo1">Testo1</a></li>
-                    <li><a href="#Testo2">Testo2</a></li>
-                    <!--<li><img src="/img/other-img/logo bianco.png" alt="logo"></img>-->
-                    <li><a href="#Testo3">Testo3</a></li>
-                    <li><a href="#Testo4">Testo4</a></li>
-                </ul>
-            </nav>
+        <?php
+        include 'header.php';
+        ?>
     </header>
-
 
     <div id="home" class="hero">
         <h1>Esplora il Fascino delle Auto d'Epoca</h1>
@@ -90,7 +82,6 @@
                 <a href="/dettagli auto/Mustang.html" class="btn">Dettagli</a>
             </div>
         </div>
-
 
         <div class="car-card">
             <img src="img/card-img/Volkswagen.jpg" alt="immagine maggiolino">

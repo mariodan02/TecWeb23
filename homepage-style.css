@@ -25,8 +25,6 @@ header {
     z-index: 100;
 }
 
-
-
 nav {
     background-color: transparent;
     display:inline-block;
@@ -55,7 +53,6 @@ nav li a {
     font-weight: bold;
 }
 nav li a:hover {background-color: #fdf4dc; color: #221711;}
-
 
 .hero {
     background-size: cover;
@@ -141,7 +138,6 @@ section {padding: 2em;}
     text-align: center;
     margin-right: 10px; /* Aggiungi un margine a destra per evitare il taglio */
 }
-
 
 .footer {
     background-color: #221711;
