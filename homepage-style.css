@@ -1,0 +1,155 @@
+body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #221711;
+    overflow-x: hidden;
+}
+
+.car-card:hover {
+    transform: scale(1.1); 
+    transition: transform 0.3s ease-out; 
+}
+
+header {
+    background: linear-gradient(to top, rgba(34, 23, 17, 0.05),  #221711),
+                linear-gradient(to bottom,  #221711, transparent);
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    z-index: 100;
+}
+
+
+
+nav {
+    background-color: transparent;
+    display:inline-block;
+    overflow: hidden;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+header img{
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+}
+
+nav ul {list-style: none; padding: 0;margin: 0;}
+nav li {display: inline-block; margin-right: 20px;}
+nav li:last-child {margin-right: 0;}
+nav li a {
+    padding: 10px;
+    text-decoration: none;
+    color: #fdf4dc;
+    font-weight: bold;
+}
+nav li a:hover {background-color: #fdf4dc; color: #221711;}
+
+
+.hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fdf4dc;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Imposta l'altezza al 100% della finestra di visualizzazione */
+    padding: 20px; /* Regola la quantità di padding desiderata */
+}
+
+#home{margin-top:0;}
+
+.hero h1 {font-size: 2.5em;margin-bottom: 20px;}
+.hero p {font-size: 1.2em;margin-bottom: 30px;}
+
+.btn {
+    display: inline-block;
+    background-color: #fdf4dc;
+    color: #221711;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+section {padding: 2em;}
+
+#lista-auto {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.car-card {
+    width: 300px;
+    margin: 15px;
+    box-sizing: border-box;
+    background-color: #fdf4dc;
+    border: 1px solid #fdf4dc;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.car-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #dbd2b8;
+}
+
+.car-info {
+    flex: 1; /* Fai espandere il contenuto della .car-info per occupare lo spazio rimanente nella .car-card */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Posiziona il testo al centro */
+}
+
+.car-info h3, p {
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-align: center; /* Centra il testo */
+}
+
+.car-info .btn {
+    display: block;
+    width: calc(100% - 20px); /* Sottrai il doppio del padding per evitare il taglio sulla parte destra */
+    padding: 10px;
+    background-color: #221711;
+    color: #fdf4dc;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    margin-right: 10px; /* Aggiungi un margine a destra per evitare il taglio */
+}
+
+
+.footer {
+    background-color: #221711;
+    color: #fdf4dc;
+    column-count: 4; /* Imposta il numero desiderato di colonne */
+    column-rule: 2px solid #fdf4dc;
+    column-gap: 20px; /* Aggiungi un margine tra le colonne per una separazione più chiara */
+    clear: both;
+    padding: 2em;
+}
+.footer p {margin: 0;} /* Rimuovi il margine predefinito dai paragrafi */
