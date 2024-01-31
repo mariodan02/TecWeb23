@@ -1,0 +1,276 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 16.1
+-- Dumped by pg_dump version 16.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: auto; Type: TABLE; Schema: public; Owner: www
+--
+
+CREATE TABLE public.auto (
+    id integer NOT NULL,
+    nome character varying(255) NOT NULL,
+    anno character varying(255) NOT NULL,
+    prezzo character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.auto OWNER TO www;
+
+--
+-- Name: auto_id_seq; Type: SEQUENCE; Schema: public; Owner: www
+--
+
+CREATE SEQUENCE public.auto_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.auto_id_seq OWNER TO www;
+
+--
+-- Name: auto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: www
+--
+
+ALTER SEQUENCE public.auto_id_seq OWNED BY public.auto.id;
+
+
+--
+-- Name: garage; Type: TABLE; Schema: public; Owner: www
+--
+
+CREATE TABLE public.garage (
+    id integer NOT NULL,
+    username character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.garage OWNER TO www;
+
+--
+-- Name: garage-auto; Type: TABLE; Schema: public; Owner: www
+--
+
+CREATE TABLE public."garage-auto" (
+    id integer NOT NULL,
+    id_auto integer NOT NULL,
+    id_garage integer NOT NULL
+);
+
+
+ALTER TABLE public."garage-auto" OWNER TO www;
+
+--
+-- Name: garage-auto_id_seq; Type: SEQUENCE; Schema: public; Owner: www
+--
+
+CREATE SEQUENCE public."garage-auto_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public."garage-auto_id_seq" OWNER TO www;
+
+--
+-- Name: garage-auto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: www
+--
+
+ALTER SEQUENCE public."garage-auto_id_seq" OWNED BY public."garage-auto".id;
+
+
+--
+-- Name: garage_id_seq; Type: SEQUENCE; Schema: public; Owner: www
+--
+
+CREATE SEQUENCE public.garage_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.garage_id_seq OWNER TO www;
+
+--
+-- Name: garage_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: www
+--
+
+ALTER SEQUENCE public.garage_id_seq OWNED BY public.garage.id;
+
+
+--
+-- Name: utenti; Type: TABLE; Schema: public; Owner: www
+--
+
+CREATE TABLE public.utenti (
+    username character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    password character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.utenti OWNER TO www;
+
+--
+-- Name: auto id; Type: DEFAULT; Schema: public; Owner: www
+--
+
+ALTER TABLE ONLY public.auto ALTER COLUMN id SET DEFAULT nextval('public.auto_id_seq'::regclass);
+
+
+--
+-- Name: garage id; Type: DEFAULT; Schema: public; Owner: www
+--
+
+ALTER TABLE ONLY public.garage ALTER COLUMN id SET DEFAULT nextval('public.garage_id_seq'::regclass);
+
+
+--
+-- Name: garage-auto id; Type: DEFAULT; Schema: public; Owner: www
+--
+
+ALTER TABLE ONLY public."garage-auto" ALTER COLUMN id SET DEFAULT nextval('public."garage-auto_id_seq"'::regclass);
+
+
+--
+-- Data for Name: auto; Type: TABLE DATA; Schema: public; Owner: www
+--
+
+COPY public.auto (id, nome, anno, prezzo) FROM stdin;
+5	Ford Mustang	1967	50000
+6	Nome Auto	2024	10
+\.
+
+
+--
+-- Data for Name: garage; Type: TABLE DATA; Schema: public; Owner: www
+--
+
+COPY public.garage (id, username) FROM stdin;
+\.
+
+
+--
+-- Data for Name: garage-auto; Type: TABLE DATA; Schema: public; Owner: www
+--
+
+COPY public."garage-auto" (id, id_auto, id_garage) FROM stdin;
+\.
+
+
+--
+-- Data for Name: utenti; Type: TABLE DATA; Schema: public; Owner: www
+--
+
+COPY public.utenti (username, email, password) FROM stdin;
+\.
+
+
+--
+-- Name: auto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www
+--
+
+SELECT pg_catalog.setval('public.auto_id_seq', 6, true);
+
+
+--
+-- Name: garage-auto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www
+--
+
+SELECT pg_catalog.setval('public."garage-auto_id_seq"', 1, false);
+
+
+--
+-- Name: garage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www
+--
+
+SELECT pg_catalog.setval('public.garage_id_seq', 1, false);
+
+
+--
+-- Name: auto auto_pkey; Type: CONSTRAINT; Schema: public; Owner: www
+--
+
+ALTER TABLE ONLY public.auto
+    ADD CONSTRAINT auto_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: garage-auto garage-auto_pkey; Type: CONSTRAINT; Schema: public; Owner: www
+--
+
+ALTER TABLE ONLY public."garage-auto"
+    ADD CONSTRAINT "garage-auto_pkey" PRIMARY KEY (id_auto);
+
+
+--
+-- Name: garage garage_pkey; Type: CONSTRAINT; Schema: public; Owner: www
+--
+
+ALTER TABLE ONLY public.garage
+    ADD CONSTRAINT garage_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: utenti utenti_pkey; Type: CONSTRAINT; Schema: public; Owner: www
+--
+
+ALTER TABLE ONLY public.utenti
+    ADD CONSTRAINT utenti_pkey PRIMARY KEY (username);
+
+
+--
+-- Name: garage-auto fk_auto; Type: FK CONSTRAINT; Schema: public; Owner: www
+--
+
+ALTER TABLE ONLY public."garage-auto"
+    ADD CONSTRAINT fk_auto FOREIGN KEY (id_auto) REFERENCES public.auto(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: garage-auto fk_garage; Type: FK CONSTRAINT; Schema: public; Owner: www
+--
+
+ALTER TABLE ONLY public."garage-auto"
+    ADD CONSTRAINT fk_garage FOREIGN KEY (id_garage) REFERENCES public.garage(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: garage fk_username; Type: FK CONSTRAINT; Schema: public; Owner: www
+--
+
+ALTER TABLE ONLY public.garage
+    ADD CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES public.utenti(username) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
