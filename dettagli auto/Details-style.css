@@ -7,6 +7,9 @@ body {
 
 /* Slideshow container */
 .slideshow-container {
+    display: inline-block;
+    border: 2px solid #fdf4dc;
+    border-radius: 15px;
     max-width: 1000px;
     position: relative;
     margin: auto;
@@ -46,10 +49,10 @@ body {
   
   /* Caption text */
   .text {
+    display: inline-block;
     color: #f2f2f2;
     font-size: 15px;
     padding: 8px 12px;
-    position: absolute;
     bottom: 8px;
     width: 100%;
     text-align: center;

@@ -79,7 +79,7 @@
                 <p><strong>Anno: </strong> 1967</p>
                 <p><strong>Prezzo: </strong> $40,000-$100,000</p>
                 <!-- Controllare se l'utente è registrato -->
-                <a href="Dettagli" class="btn">Dettagli</a>  
+                <a href="/dettagli auto/2 Volkswagen Beetle.html" class="btn">Dettagli</a>  
             </div>
         </div>
 
