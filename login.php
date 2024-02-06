@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Accedi - WikiCar Vintage</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pirata+One&display=swap">
 </head>
-
-  <?php
-    include 'header.php';
-  ?>
-
+<header>
+<?php
+        include 'header.php';
+    ?>
+</header>
 
 <body>
   <div class="container">
@@ -18,9 +19,9 @@
       <h2>Effettua l'accesso</h2>
       <br>
           <form id="signup-form" method="post" action="login-manager.php">
-            <label for="username">Username</label>
-            <input type="username" id="username" name="username" placeholder="Inserisci il tuo username">
-            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Inserisci il tuo indirizzo email">
+
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Inserisci la tua password">
 
@@ -38,7 +39,7 @@
       </form>
     </div>
     <div class="branding">
-      <img src="img/other-img/wikicar-logo.png" alt="WikiCar Vintage">
+      <img src="wikicar-logo.png" alt="WikiCar Vintage">
     </div>
   </div>
 </div>
