@@ -7,12 +7,9 @@
 <link rel="stylesheet" href="homepage-style.css">
 <script src="inputValidation.js"></script>
 </head>
-<header>
 <?php
         include 'header.php';
     ?>
-</header>
-
 <?php
 		if(isset($_POST['username']))
 			$username = $_POST['username'];
@@ -79,11 +76,9 @@
   </div>
 </div>
 </body>
-<footer>
   <?php
         include 'footer.php';
     ?>
-</footer>
 </html>
 
 <?php
@@ -92,7 +87,7 @@ function username_exist($username){
 	// Connessione al database
 	$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
 	echo "Connessione al database avvenuta con successo<br/>";
-	$sql = "SELECT username FROM utente WHERE username=$1";
+	$sql = "SELECT username FROM utenti WHERE username=$1";
 	$prep = pg_prepare($db, "sqlUsername", $sql);
 	$ret = pg_execute($db, "sqlUsername", array($username));
 	if(!$ret) {
@@ -116,9 +111,9 @@ function insert_utente($username, $email, $password){
 	$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
 	echo "Connessione al database avvenuta con successo<br/>";
 	$hash = password_hash($password, PASSWORD_DEFAULT);
-	$sql = "INSERT INTO utente(username, email, password) VALUES($1, $2, $3)";
+	$sql = "INSERT INTO utenti(username, email, password) VALUES($1, $2, $3)";
 	$prep = pg_prepare($db, "insertUser", $sql);
-	$ret = pg_execute($db, "insertUser", array($nome,$cognome,$sesso,$username, $hash));
+	$ret = pg_execute($db, "insertUser", array($username,$email,$hash));
 	if(!$ret) {
 		echo "$hash ERRORE QUERY: " . pg_last_error($db);
 		return false;

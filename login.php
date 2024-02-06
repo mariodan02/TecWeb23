@@ -17,16 +17,11 @@
       <h2>Effettua l'accesso</h2>
       <br>
           <form id="signin-form" method="post" action="login-manager.php">
-            <label for="username">Username</label><br>
-            <input type="text" id="username" name="username" placeholder="Inserisci il tuo username"><br><br>
+            <label for="username">Nome utente</label><br>
+            <input type="text" id="username" name="username" placeholder="Inserisci il tuo nome utente"><br><br>
             
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Inserisci la tua password">
-
-              <div class="checkbox">
-                <input type="checkbox" id="agree" name="agree">
-                <label for="agree">Acconsento al trattamento dei dati personali</label>
-              </div>
 
         <input style = "width: 100%; padding: 10px; margin: 10px 0; border: none; border-radius: 4px; background-color: #221711; color: #FDF6DC;"
          type="submit" name="invia" value="Accedi" />
@@ -42,9 +37,7 @@
   </div>
 </div>
 </body>
-<footer>
   <?php
         include 'footer.php';
     ?>
-</footer>
 </html>

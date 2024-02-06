@@ -7,11 +7,9 @@
   	<link rel="icon" href="wikicar-logo.png" >
 	  <link rel="stylesheet" href="homepage-style.css">
 	</head>
-	<header style="background-color:white;">
 		<?php
 				include 'header.php';
 		?>
-	</header>
 	<body>
 		<?php
 			/* distrugge la sessione attiva */
@@ -22,13 +20,11 @@
 				setcookie($sname,'', time()-3600,'/');
 			}
 			echo "<br><br><center><p>Logout effettuato. Ciao ".$_SESSION["username"]." </p>";
-			echo "<br><center><p>Torna alla <a href=\"hometab.php\">Home</a></p>";
+			echo "<br><center><p>Torna alla <a href=\"homepage.php\">Home</a></p>";
 			?>
 	</body>
 	<br><br><br><br>
-	<footer style="background-color:white;">
 		<?php
       include 'footer.php';
     ?>
-	</footer>
 </html>

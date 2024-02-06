@@ -19,7 +19,7 @@
 				$password =  $_POST['password'];
 				$hash = get_pwd($username);
 				if(!$hash){
-					echo "<br><br><center><p> L'utente $username non esiste. <a href=\"login.php\">Riprova</a></p>";
+					echo "<br><br><center><p> L'utente $username non esiste. <a href=\"login.php\">Riprova</a> oppure <a href=\"registrazione.php\">registrati adesso!</a> </p>";
 				} else {
 					if (password_verify($password, $hash)) {
 						echo "<script type=\"text/javascript\"> alert(\"Login Eseguito con successo\");</script>";
