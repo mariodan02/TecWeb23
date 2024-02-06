@@ -16,7 +16,7 @@
       <div class="form-container">
       <h2>Effettua l'accesso</h2>
       <br>
-          <form id="signup-form" method="post" action="login-manager.php">
+          <form id="signin-form" method="post" action="login-manager.php">
             <label for="username">Username</label><br>
             <input type="password" id="username" name="username" placeholder="Inserisci il tuo username"><br><br>
             

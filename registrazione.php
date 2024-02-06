@@ -12,6 +12,7 @@
         include 'header.php';
     ?>
 </header>
+
 <?php
 		if(isset($_POST['username']))
 			$username = $_POST['username'];
@@ -44,17 +45,17 @@
 		?>
 
 <body>
-  <div class="container">
+  	<div class="container">
       <div class="form-container">
       <h2>Registrati adesso</h2>
       <br>
-          <form id="signup-form" method="post" action="registrazione.php" onsubmit="return validateFormSignUp()">
+        <form id="signup-form" method="post" action="registrazione.php" onsubmit="return validateFormSignUp()">
 
             <label for="username">Nome utente</label>
-            <input type="text" id="username" name="username" placeholder="Inserisci il tuo nome utente">
+            <input type="password" id="username" name="username" placeholder="Inserisci il tuo nome utente"><br>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Inserisci il tuo indirizzo email">
+            <input type="password" id="email" name="email" placeholder="Inserisci il tuo indirizzo email">
 
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Inserisci la tua password">
@@ -67,13 +68,13 @@
 			<input style = "width: 100%; padding: 10px; margin: 10px 0; border: none; border-radius: 4px; background-color: #221711; color: #FDF6DC;" 
         	type="submit" name="registrazione" value="Registrati"/>
 
-        <div class="login-link">
-          Hai già un account? <a href="login.php">Accedi</a>
-        </div>
-      </form>
-    </div>
+        	<div class="login-link">
+          	Hai già un account? <a href="login.php">Accedi</a>
+        	</div>
+        </form>
+      </div>
     <div class="branding">
-      <img src="wikicar-logo.png" alt="WikiCar Vintage">
+      <img src="img/other-img/wikicar-logo.png" alt="WikiCar Vintage">
     </div>
   </div>
 </div>
