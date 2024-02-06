@@ -149,3 +149,35 @@ section {padding: 2em;}
     padding: 2em;
 }
 .footer p {margin: 0;} /* Rimuovi il margine predefinito dai paragrafi */
+
+.container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-container {
+    border: solid 5px red;
+    float: left;
+    background-color: #FDF5DC;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+    width: 90%;   /*percentuale dovrebbe ess relativi al content box*/
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #221711;
+    border-radius: 4px;
+}
+
+.checkbox {
+    margin: 20px 0;
+}
+
+  
