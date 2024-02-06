@@ -18,7 +18,7 @@
       <br>
           <form id="signin-form" method="post" action="login-manager.php">
             <label for="username">Username</label><br>
-            <input type="password" id="username" name="username" placeholder="Inserisci il tuo username"><br><br>
+            <input type="text" id="username" name="username" placeholder="Inserisci il tuo username"><br><br>
             
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Inserisci la tua password">
