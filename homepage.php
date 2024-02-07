@@ -73,7 +73,7 @@
 
         // Esecuzione della query
         $query = 'SELECT * FROM auto';
-        $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+        $result = pg_query($dbconn, $query) or die('Query failed: ' . pg_last_error());
 
         // Ciclo per ogni auto
         while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
