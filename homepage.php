@@ -8,7 +8,7 @@
     <link rel="icon" href="img/other-img/logo.png" type="image/x-icon">
     <link rel="shortcut icon" href="img/other-img/logo.png" type="image/x-icon">
     <style>
-        /*#background-image {
+        /* #background-image {
             position: fixed;
             top: 0;
             left: 0;
@@ -17,9 +17,9 @@
             z-index: -1;
             background-image: url('img/other-img/sfondo.jpg');
             background-size: cover;
-            transition: transform 0.3s ease-out, filter 0.3s ease-out; /* Aggiunto filtro alla transizione 
-            filter: blur(0px); /* Aggiungi il filtro di sfocatura con un valore iniziale di 0px 
-        }*/
+            transition: transform 0.3s ease-out, filter 0.3s ease-out; Aggiunto filtro alla transizione
+            filter: blur(0px); /* Aggiungi il filtro di sfocatura con un valore iniziale di 0px
+        } */
         #background-video {
             position: fixed;
             margin: 0;
@@ -49,14 +49,11 @@
             height: auto;
         }
     </style>
-
 </head>
 
-<?php
-        include 'header.php';
-        ?>
-
 <body>
+    <?php include 'header.php'; ?>
+
     <video id="background-video" autoplay muted loop>
         <source src="Sfondo 1.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -69,36 +66,44 @@
     </div>
 
     <section id="lista-auto">
-    <?php
-    // Connessione al database PostgreSQL
-    $dbconn = pg_connect("host=localhost dbname=gruppo09 user=www password=tw2023") /*ricordare di cambiare psw*/ 
-        or die('Could not connect: ' . pg_last_error());
+        <?php
+        // Connessione al database PostgreSQL
+        $dbconn = pg_connect("host=localhost dbname=gruppo09 user=www password=tw2023") /*ricordare di cambiare psw*/ 
+            or die('Could not connect: ' . pg_last_error());
 
-    // Esecuzione della query
-    $query = 'SELECT * FROM auto';
-    $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+        // Esecuzione della query
+        $query = 'SELECT * FROM auto';
+        $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
-    // Ciclo per ogni auto
-    while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-    echo '<div class="card">';
-    // Qui puoi aggiungere il codice HTML per mostrare i dettagli dell'auto
-    echo '<h2>' . htmlspecialchars($auto['nome']) . '<br>' . htmlspecialchars($auto['anno']) . '<br>' . htmlspecialchars($auto['prezzo'])  . '</h2>';
+        // Ciclo per ogni auto
+        while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+            echo '<div class="card">';
+            
+            // Aggiunta dell'immagine dell'auto
+            echo '<img src="img/card-img/' . htmlspecialchars($auto['img']) . '.jpg" alt="Immagine di ' . htmlspecialchars($auto['nome']) . '">';
 
-    // Pulsante Dettagli o Confronta in base allo stato di login
-    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-        echo '<a href="/path/to/confronto.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Confronta</a>';
-    } else {
-        echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
-    }
-    echo '</div>';
-}
+            // Sezione delle informazioni dell'auto
+            echo '<div class="card-info">';
+            echo '<h3>' . htmlspecialchars($auto['nome']) . '</h3>';
+            echo '<p>Anno: ' . htmlspecialchars($auto['anno']) . '</p>';
+            echo '<p>Prezzo: ' . htmlspecialchars($auto['prezzo']) . '</p>';
+            echo '</div>';
+        
+            // Pulsante Dettagli o Confronta
+            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                echo '<a href="/path/to/confronto.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Confronta</a>';
+            } else {
+                echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
+            }
+            echo '</div>';
+        }    
 
-// Liberare il risultato
-pg_free_result($result);
+        // Liberare il risultato
+        pg_free_result($result);
 
-// Chiudere la connessione
-pg_close($dbconn);
-?>
+        // Chiudere la connessione
+        pg_close($dbconn);
+        ?>
     </section>
 
     <br><br>
@@ -135,7 +140,6 @@ pg_close($dbconn);
         window.addEventListener('scroll', function(){
             var header = document.querySelector('header');
             var scrolled = window.scrollY > 100; // Cambia il valore a seconda di quando vuoi che avvenga il cambio di colore
-            
             if(scrolled){
                 header.classList.add('scrolled');
             }else{
@@ -177,7 +181,5 @@ pg_close($dbconn);
 
     </script>
 
-
 </body>
 </html>
-
