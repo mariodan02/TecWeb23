@@ -7,11 +7,6 @@ body {
     overflow-x: hidden;
 }
 
-.car-card:hover {
-    transform: scale(1.1); 
-    transition: transform 0.3s ease-out; 
-}
-
 header {
     background: linear-gradient(to top, rgba(34, 23, 17, 0.05),  #221711),
                 linear-gradient(to bottom,  #221711, transparent);
@@ -93,7 +88,12 @@ section {padding: 2em;}
     align-items: stretch;
 }
 
-.car-card {
+.card:hover {
+    transform: scale(1.1); 
+    transition: transform 0.3s ease-out; 
+}
+
+.card {
     width: 300px;
     margin: 15px;
     box-sizing: border-box;
@@ -105,14 +105,14 @@ section {padding: 2em;}
     flex-direction: column;
 }
 
-.car-card img {
+.card img {
     width: 100%;
     height: 180px;
     object-fit: cover;
     border-bottom: 1px solid #dbd2b8;
 }
 
-.car-info {
+.card-info {
     flex: 1; /* Fai espandere il contenuto della .car-info per occupare lo spazio rimanente nella .car-card */
     padding: 15px;
     display: flex;
@@ -120,13 +120,13 @@ section {padding: 2em;}
     justify-content: space-between; /* Posiziona il testo al centro */
 }
 
-.car-info h3, p {
+.card-info h3, p {
     font-size: 15px;
     margin-bottom: 10px;
     text-align: center; /* Centra il testo */
 }
 
-.car-info .btn {
+.card .btn {
     display: block;
     width: calc(100% - 20px); /* Sottrai il doppio del padding per evitare il taglio sulla parte destra */
     padding: 10px;
