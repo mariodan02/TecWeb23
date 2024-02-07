@@ -4,8 +4,12 @@
             <ul>
                 <li><a href="homepage.php">Homepage</a></li>
                 <li><a href="#Testo2">Testo1</a></li>
-                <li><a href="#testo3">Testo2</a></li>
                 <li><a href="login.php">Accedi</a></li>
+                <li><a href="reserved.php">Area personale</a></li>
             </ul>
         </nav>
 </header>
+
+<?php
+    session_start();
+?>

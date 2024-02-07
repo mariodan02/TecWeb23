@@ -51,17 +51,16 @@
     </style>
 
 </head>
+
+<?php
+        include 'header.php';
+        ?>
+
 <body>
     <video id="background-video" autoplay muted loop>
         <source src="Sfondo 1.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-
-    <header>
-        <?php
-        include 'header.php';
-        ?>
-    </header>
 
     <div id="home" class="hero">
         <h1>Esplora il Fascino delle Auto d'Epoca</h1>
@@ -70,168 +69,36 @@
     </div>
 
     <section id="lista-auto">
-        
-        <!-- Modifica la struttura delle card delle auto -->
-        <div class="car-card">
-            <img src="img/card-img/Mustang.jpeg" alt="immagine Mustang">
-            <div class="car-info">
-                <h3>Ford Mustang</h3>
-                <p><strong>Anno: </strong> 1967</p>
-                <p><strong>Prezzo: </strong> $40,000-$100,000</p>
-                <!-- Controllare se l'utente è registrato -->
-                <a href="/TecWeb23/dettagli auto/2 Volkswagen Beetle.html" class="btn">Dettagli</a>  
-            </div>
-        </div>
+    <?php
+    // Connessione al database PostgreSQL
+    $dbconn = pg_connect("host=localhost dbname=gruppo09 user=www password=tw2024") 
+        or die('Could not connect: ' . pg_last_error());
 
-        <div class="car-card">
-            <img src="img/card-img/Volkswagen.jpg" alt="immagine maggiolino">
-            <div class="car-info">
-                <h3>Volkswagen Beetle</h3>
-                <p><strong>Anno: </strong> 1938</p>
-                <p><strong>Prezzo: </strong> $15,000-$20,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
+    // Esecuzione della query
+    $query = 'SELECT * FROM auto';
+    $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
-        <div class="car-card">
-            <img src="img/card-img/Chevrolet.jpg" alt="immagine impala">
-            <div class="car-info">
-                <h3>Chevrolet Impala</h3>
-                <p><strong>Anno: </strong> 1958</p>
-                <p><strong>Prezzo: </strong> $50,000-$60,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
+    // Ciclo per ogni auto
+    while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+    echo '<div class="card">';
+    // Qui puoi aggiungere il codice HTML per mostrare i dettagli dell'auto
+    echo '<h2>' . htmlspecialchars($auto['nome']) . '<br>' . htmlspecialchars($auto['anno']) . '<br>' . htmlspecialchars($auto['prezzo'])  . '</h2>';
 
-        <div class="car-card">
-            <img src="img/card-img/Porsche.jpeg" alt="immagine 911">
-            <div class="car-info">
-                <h3>Porsche 911</h3>
-                <p><strong>Anno: </strong>1963</p>
-                <p><strong>Prezzo: </strong>$150,000-$200,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
+    // Pulsante Dettagli o Confronta in base allo stato di login
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+        echo '<a href="/path/to/confronto.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Confronta</a>';
+    } else {
+        echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
+    }
+    echo '</div>';
+}
 
-        <div class="car-card">
-            <img src="img/card-img/Jaguar.jpeg" alt="immagine E-TYPE">
-            <div class="car-info">
-                <h3>Jaguar E-TYPE</h3>
-                <p><strong>Anno: </strong>  1961</p>
-                <p><strong>Prezzo: </strong> $170,000-$280,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
+// Liberare il risultato
+pg_free_result($result);
 
-        <div class="car-card">
-            <img src="img/card-img/Toyota.jpg" alt="immagine 2000GT">
-            <div class="car-info">
-                <h3>Toyota 2000GT</h3>
-                <p><strong>Anno: </strong>  1967</p>
-                <p><strong>Prezzo: </strong> $500,000-$1,000,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="img/card-img/Benz.jpg" alt="immagine Mercedes 300SL">
-            <div class="car-info">
-                <h3>Mercedes Benz 300SL</h3>
-                <p><strong>Anno: </strong>  1954</p>
-                <p><strong>Prezzo: </strong> $1,100,000-$1,900,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="img/card-img/F40.jpg" alt="immagine F40">
-            <div class="car-info">
-                <h3>Ferrari F40</h3>
-                <p><strong>Anno: </strong>  1987</p>
-                <p><strong>Prezzo: </strong> $1,300,000-$2,300,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="img/card-img/BMW.jpg" alt="immagine BMW">
-            <div class="car-info">
-                <h3>BMW 2002</h3>
-                <p><strong>Anno: </strong>  1968</p>
-                <p><strong>Prezzo: </strong> $40,000-$50,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="img/card-img/Lamborghini.jpeg" alt="immagine lamborghini">
-            <div class="car-info">
-                <h3>Lamborghini Miura</h3>
-                <p><strong>Anno: </strong>  1966</p>
-                <p><strong>Prezzo: </strong> $1,600,000-$3,500,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="img/card-img/Alfa Romeo Giulia GTV 1965.jpg" alt="immagine AlfaRomeo">
-            <div class="car-info">
-                <h3>Alfa Romeo Giulia GTV</h3>
-                <p><strong>Anno: </strong>  1965</p>
-                <p><strong>Prezzo: </strong> $50,000-$70,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="img/card-img/Fiat 500 1957.jpg" alt="immagine Fiat500">
-            <div class="car-info">
-                <h3>Fiat 500</h3>
-                <p><strong>Anno: </strong>  1957</p>
-                <p><strong>Prezzo: </strong> $15,000-$20,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="img/card-img/Delta.jpg" alt="immagine Delta">
-            <div class="car-info">
-                <h3>Lancia Delta Integrale</h3>
-                <p><strong>Anno: </strong> 1967</p>
-                <p><strong>Prezzo: </strong> $180,000-$250,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="img/card-img/Citroen.jpg" alt="immagine DS">
-            <div class="car-info">
-                <h3>Citroen DS</h3>
-                <p><strong>Anno: </strong> 1955</p>
-                <p><strong>Prezzo: </strong> $35,000-$100,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="img/card-img/Aston Martin.jpg" alt="immagine DB5">
-            <div class="car-info">
-                <h3>Aston Martin DB5</h3>
-                <p><strong>Anno: </strong> 1963</p>
-                <p><strong>Prezzo: </strong> $500,000-$800,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="img/card-img/Shelby.jpeg" alt="immagine Shelby" >
-            <div class="car-info">
-                <h3>Shelby Cobra</h3>
-                <p><strong>Anno: </strong> 1962</p>
-                <p><strong>Prezzo: </strong> $500,000-$2,000,000</p>
-                <a href="#" class="btn">Dettagli</a>
-            </div>
-        </div>
+// Chiudere la connessione
+pg_close($dbconn);
+?>
     </section>
 
     <br><br>

@@ -6,24 +6,26 @@
 <title>Area Riservata - WikiCar Vintage</title>
 <link rel="stylesheet" href="homepage-style.css">
 </head>
-
-  <?php
-    include 'header.php';
-  ?>
-
 <body>
+
 <?php
-    // Verifica se l'utente è loggato
-    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    // L'utente è loggato, rimani nella pagina corrente
-    } else {
-    // L'utente non è loggato, reindirizza a login.php
-    header('Location: login.php');
-    exit();
-    }
+  //  include 'header.php';
 ?>
+
+<div class="user-actions">
+    <?php
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+        echo "Ciao, ";
+        echo "<a href='logout.php'>Effettua il logout</a>";
+    } else {
+        echo " Non riusciamo a riconoscerti! Effettua l'<a href='login.php'>accesso</a> se sei giá registrato o <a href='registrazione.php'>registrati</a> se é la prima volta che vieni a trovarci!";
+        exit();
+    }
+    ?>
+</div>
+
 </body>
   <?php
-        include 'footer.php';
+    include 'footer.php';
     ?>
 </html>
