@@ -5,12 +5,13 @@
   	<meta name="description" content="Archivio di auto d'epoca"/>
   	<meta charset = "utf-8"/>
   	<link rel="icon" href="wikicar-logo.png" >
-	  <link rel="stylesheet" href="homepage-style.css">
+	  <link rel="stylesheet" href="style.css">
 	</head>
 		<?php
 				include 'header.php';
 		?>
 	<body>
+	<br><br><br><br><br><br><br><br><br><br>
 		<?php
 			/* distrugge la sessione attiva */
 			$sname=session_name();

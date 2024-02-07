@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Accedi - WikiCar Vintage</title>
-<link rel="stylesheet" href="homepage-style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
   <?php
@@ -23,9 +23,8 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Inserisci la tua password">
 
-        <input style = "width: 100%; padding: 10px; margin: 10px 0; border: none; border-radius: 4px; background-color: #221711; color: #FDF6DC;"
+        <input style = "width: 100%; padding: 10px; margin: 10px 0; border: none; border-radius: 4px; background-color: #221711; color: #FDF6DC; margin-top: 50px;"
          type="submit" name="invia" value="Accedi" />
-
          <div class="login-link">
           Non hai ancora un account? <a href="registrazione.php">Registrati</a>
         </div>
