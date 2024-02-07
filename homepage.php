@@ -71,7 +71,7 @@
     <section id="lista-auto">
     <?php
     // Connessione al database PostgreSQL
-    $dbconn = pg_connect("host=localhost dbname=gruppo09 user=www password=tw2024") 
+    $dbconn = pg_connect("host=localhost dbname=gruppo09 user=www password=tw2023") /*ricordare di cambiare psw*/ 
         or die('Could not connect: ' . pg_last_error());
 
     // Esecuzione della query
