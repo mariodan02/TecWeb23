@@ -91,7 +91,7 @@
         
             // Pulsante Dettagli o Confronta
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-                echo '<a href="/path/to/confronto.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Confronta</a>';
+                echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>';
             } else {
                 echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
             }
@@ -177,7 +177,7 @@
 
             // Chiama la funzione in modo ricorsivo dopo 2 secondi
             setTimeout(showSlides, 3000); // Cambia slide ogni 3 secondi
-        }
+}
 
     </script>
 

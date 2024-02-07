@@ -13,21 +13,33 @@
 
 <body>
 <div class="container">
-      <div class="form-container">
-      <?php
-      if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-        echo "Ciao, <a href='logout.php'>effettua il logout</a>";
-      } else {
-        echo " Non riusciamo a riconoscerti! Effettua l'<a href='login.php'>accesso</a> se sei giá registrato o <a href='registrazione.php'>registrati</a> se é la prima volta che vieni a trovarci!";
-      }
-      ?>
-      </div>
+    <div class="form-container">
+        <?php
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+            // Assicurati che il cookie 'username' sia impostato al momento del login
+            $username = $_SESSION['username'] ?? 'user';
+            echo "Ciao, " . htmlspecialchars($username) . "! <a href='logout.php'>Effettua il logout</a>";
+        } else {
+            echo "Non riusciamo a riconoscerti! Effettua l'<a href='login.php'>accesso</a> se sei già registrato o <a href='registrazione.php'>registrati</a> se è la prima volta che vieni a trovarci!";
+        }
+        ?>
+    </div>
+    
+    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
+        <div class="container">
+            <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
+                Seleziona immagine:
+                <input type="file" name="profilePic" id="profilePic">
+                <input type="submit" value="Carica" name="submit">
+            </form>
+        </div>
+    <?php endif; ?>
+      
 </div>
 
-</body>
-
-  <?php
+<?php
     include 'footer.php';
-    ?>
+?>
 
+</body>
 </html>
