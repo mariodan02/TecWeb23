@@ -40,6 +40,7 @@ try {
         }
     }
 } finally {
+    // Chiudi sempre la connessione al database alla fine del blocco try
     if (isset($db) && $db) {
         pg_close($db);
     }
