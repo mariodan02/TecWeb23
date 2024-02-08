@@ -56,7 +56,8 @@ else {
     // Sposta il file caricato nella cartella di destinazione con il nuovo nome.
     if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $targetFile)) {
         echo "Il file è stato caricato e rinominato in: " . htmlspecialchars($_SESSION['username'] . "." . $fileExtension);
-    } else {
+        echo "<br><a href='homepage.php'>Torna alla homepage</a>";
+        } else {
         echo "Si è verificato un errore durante il caricamento del tuo file.";
         }
     }

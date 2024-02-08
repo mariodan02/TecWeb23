@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Confronta Auto</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="headerstyle.css">
     <script>
         function clearCookies() {
             document.cookie.split(";").forEach(function(c) {

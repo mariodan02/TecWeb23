@@ -4,22 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="homepage-style.css">
+    <link rel="stylesheet" href="headerstyle.css">
     <title>WikiCar Vintage</title>
     <link rel="icon" href="img/other-img/logo.png" type="image/x-icon">
     <link rel="shortcut icon" href="img/other-img/logo.png" type="image/x-icon">
+
     <style>
-        /* #background-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-            background-image: url('img/other-img/sfondo.jpg');
-            background-size: cover;
-            transition: transform 0.3s ease-out, filter 0.3s ease-out; Aggiunto filtro alla transizione
-            filter: blur(0px); /* Aggiungi il filtro di sfocatura con un valore iniziale di 0px
-        } */
         #background-video {
             position: fixed;
             margin: 0;
@@ -171,13 +161,23 @@
                 container.style.transform = `translateX(${offset}%)`;
                 requestAnimationFrame(animate);
             }
-
+            
             // Chiama la funzione animate
             animate();
 
             // Chiama la funzione in modo ricorsivo dopo 2 secondi
             setTimeout(showSlides, 3000); // Cambia slide ogni 3 secondi
+
 }
+
+            function salvaAutoConfronto(idAuto) {
+                var nomeCookie = "autoConfronto_" + idAuto;
+                var valoreCookie = idAuto;
+                var scadenza = new Date();
+                scadenza.setTime(scadenza.getTime() + (60 * 60 * 1000)); // 1 ora
+                document.cookie = nomeCookie + "=" + valoreCookie + ";expires=" + scadenza.toUTCString() + ";path=/";
+                alert('Auto aggiunta al confronto!'); // Messaggio di conferma
+        }
 
     </script>
 
