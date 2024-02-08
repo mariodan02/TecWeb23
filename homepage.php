@@ -57,13 +57,13 @@
 
     <section id="lista-auto">
         <?php
+        require "tswdb.php";
         // Connessione al database PostgreSQL
-        $dbconn = pg_connect("host=localhost dbname=gruppo09 user=www password=tw2023") /*ricordare di cambiare psw*/ 
-            or die('Could not connect: ' . pg_last_error());
+        $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
 
         // Esecuzione della query
         $query = 'SELECT * FROM auto';
-        $result = pg_query($dbconn, $query) or die('Query failed: ' . pg_last_error());
+        $result = pg_query($db, $query) or die('Query failed: ' . pg_last_error());
 
         // Ciclo per ogni auto
         while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
@@ -93,7 +93,7 @@
         pg_free_result($result);
 
         // Chiudere la connessione
-        pg_close($dbconn);
+        pg_close($db);
         ?>
     </section>
 

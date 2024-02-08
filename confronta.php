@@ -63,8 +63,8 @@
     }
 
     // Stabilisci una connessione al database PostgreSQL
-    $dbconn = pg_connect("host=localhost dbname=gruppo09 user=www password=tw2023") 
-    or die('Could not connect: ' . pg_last_error());
+    require "tswdb.php";
+    $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
 
     // Se ci sono auto selezionate, esegui una query per recuperare i loro dettagli
     if (count($auto_selezionate) > 0) {
@@ -73,7 +73,7 @@
         
         // Esegui la query per ottenere i dettagli delle auto selezionate
         $query = "SELECT * FROM auto WHERE id IN ($ids)";
-        $result = pg_query($dbconn, $query) or die('Query failed: ' . pg_last_error());
+        $result = pg_query($db, $query) or die('Query failed: ' . pg_last_error());
         
         // Ottieni tutti i risultati della query come array associativo
         $auto_selezionate = pg_fetch_all($result);

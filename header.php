@@ -31,6 +31,8 @@ function showResult(str) {
             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
                 <!-- Se l'utente è loggato, mostra il link all'area personale e il menu a tendina -->
                 <li class="dropdown">
+        <!-- Verificare spazio -->
+                  <br>
                     <a href="javascript:void(0)" class="dropbtn">Area personale</a>
                     <div class="dropdown-content">
                         <a href="reserved.php">Profilo</a>
@@ -40,8 +42,8 @@ function showResult(str) {
             <?php else: ?>
                 <!-- Se l'utente non è loggato, mostra il link per creare un account -->
                 <li><a href="registrazione.php">Registrati</a></li>
-                <li><input type="text" size="30" onkeyup="showResult(this.value)"> <div id="livesearch"></div> </li>
             <?php endif; ?>
+            <li><input type="text" size="30" onkeyup="showResult(this.value)"> <div id="livesearch"></div> </li>
         </ul>
     </nav>
 </header>
