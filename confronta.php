@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Confronta Auto</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="homepage-style.css">
     <link rel="stylesheet" href="headerstyle.css">
     <script>
         function clearCookies() {
@@ -83,38 +83,33 @@
     }
 ?>
 
-<div class="confronta-container">
-    <h1>Confronta Auto Selezionate</h1>
-    <?php if (count($auto_selezionate) > 0): ?>
-        <table>
-    <thead>
-        <tr>
-            <th>Modello</th>
-            <th>Anno</th>
-            <th>Prezzo</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($auto_selezionate as $auto): ?>
-            <tr>
-                <!-- Usa htmlspecialchars per prevenire XSS (Cross-Site Scripting) -->
-                <td><?php echo htmlspecialchars($auto['nome']); ?></td>
-                <td><?php echo htmlspecialchars($auto['anno']); ?></td>
-                <td><?php echo htmlspecialchars($auto['prezzo']); ?></td>
-                <td>
-                    <button onclick="rimuoviAuto(<?php echo intval($auto['id']); ?>)">Rimuovi</button>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<?php if (count($auto_selezionate) > 0): ?>
+    <?php foreach ($auto_selezionate as $auto): ?>
+        <div class="card">
+            <!-- Aggiunta dell'immagine dell'auto -->
+            <img src="img/card-img/<?php echo htmlspecialchars($auto['img']) . '.jpg'; ?>" alt="Immagine di <?php echo htmlspecialchars($auto['nome']); ?>">
 
-        <!-- Pulsante per azzerare i cookie -->
-        <button onclick="clearCookies()">Rimuovi tutte le auto</button>
-    <?php else: ?>
-        <!-- Mostra un messaggio se nessuna auto è stata selezionata -->
-        <p>Nessuna auto selezionata per il confronto.</p>
-    <?php endif; ?>
-</div>
+            <!-- Sezione delle informazioni dell'auto -->
+            <div class="card-info">
+                <h3><?php echo htmlspecialchars($auto['nome']); ?></h3>
+                <p>Anno: <?php echo htmlspecialchars($auto['anno']); ?></p>
+                <p>Prezzo: <?php echo htmlspecialchars($auto['prezzo']); ?></p>
+                <!-- Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ? -->
+                <a href="/path/to/dettagli.php?id=<?php echo htmlspecialchars($auto['id']); ?>" class="btn">Dettagli</a>
+                </div>
+            </div>
+    <?php endforeach; ?>
+    <!-- Pulsante per azzerare i cookie -->
+    <button onclick="clearCookies()" class="btn">Rimuovi tutte le auto selezionate</button>';
+<?php else: ?>
+    <!-- Mostra un messaggio se nessuna auto è stata selezionata -->
+    <!-- Bisogna creare un container -->
+    <p><br><br><br><br><br><br><br><br><br><br><br>Nessuna auto selezionata per il confronto.</p>
+<?php endif; ?>
+
+
 </body>
+<?php 
+    include 'footer.php';
+?>  
 </html>

@@ -80,14 +80,12 @@
             echo '</div>';
         
             // Pulsante Dettagli o Confronta
+            echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                 // Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ?
-                echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
+                echo '<a href="javascript:void(0);" onclick="aggiungiAlGarage(\'' . htmlspecialchars($auto['id']). '\')" class="btn">Aggiungi al Garage</a>';
                 echo '<a href="javascript:void(0);" onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</a>';
             } 
-            else {
-                echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
-            }
             echo '</div>';
         }    
 
@@ -181,6 +179,26 @@
                 document.cookie = nomeCookie + "=" + valoreCookie + ";expires=" + scadenza.toUTCString() + ";path=/";
                 alert('Auto aggiunta al confronto!'); // Messaggio di conferma
         }
+
+    function aggiungiAlGarage(idAuto) {
+        // Esegui una richiesta HTTP POST per aggiungere l'auto al garage
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "aggiungi_al_garage.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Gestisci la risposta dal server
+                if (xhr.responseText === "success") {
+                    alert("Auto aggiunta al garage con successo!");
+                } else {
+                    alert("Si è verificato un errore durante l'aggiunta dell'auto al garage.");
+                }
+            }
+        };
+        // Invia l'ID dell'auto come parametro nella richiesta POST
+        xhr.send("idAuto=" + encodeURIComponent(idAuto));
+    }
+
 
     </script>
 

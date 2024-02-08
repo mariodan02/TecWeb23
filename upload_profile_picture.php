@@ -1,5 +1,21 @@
+<html>
+	<head>
+	<title>WikiCar Vintage</title>
+  	<meta name="author" content="TSW23_09"/>
+  	<meta name="description" content="Archivio auto d'epoca"/>
+  	<meta charset = "utf-8"/>
+  	<link rel="icon" href="wikicar-logo.png" >
+    <link rel="stylesheet" href="homepage-style.css"> 
+  	<link rel="stylesheet" href="headerstyle.css"> 
+	</head>
+	<header style="background-color:white;">
+		<?php
+				include 'header.php';
+		?>
+	</header>
+	<body>
+
 <?php
-session_start();
 
 // Verifica se l'utente è loggato
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
@@ -55,11 +71,20 @@ else {
 
     // Sposta il file caricato nella cartella di destinazione con il nuovo nome.
     if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $targetFile)) {
-        echo "Il file è stato caricato e rinominato in: " . htmlspecialchars($_SESSION['username'] . "." . $fileExtension);
-        echo "<br><a href='homepage.php'>Torna alla homepage</a>";
+        echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p>Il file è stato caricato e rinominato: " . htmlspecialchars($_SESSION['username'] . "." . $fileExtension) . "</p></center>";
+        echo "<br><center><p><a href='homepage.php'>Torna alla homepage</a>" . "</p></center>";
         } else {
         echo "Si è verificato un errore durante il caricamento del tuo file.";
         }
     }
     
 ?>
+
+</body>
+	<br><br><br><br>
+	<footer style="background-color:white;">
+		<?php
+        	include 'footer.php';
+    	?>
+		</footer>
+</html>
