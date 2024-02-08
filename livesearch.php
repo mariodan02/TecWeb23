@@ -14,8 +14,8 @@ $hint = "";
 // Cerca tra i link nel JSON se la lunghezza di "q" è maggiore di 0
 if (strlen($q) > 0) {
     foreach ($data as $link) {
-        // Trova i link che corrispondono al testo di ricerca
-        if (stristr($link['title'], $q)) {
+        // Verifica se il titolo del link inizia con la query fornita
+        if (stripos($link['title'], $q) === 0) {
             // Aggiungi il link ai suggerimenti
             if ($hint === "") {
                 $hint = "<a href='" . $link['url'] . "' target='_blank'>" . $link['title'] . "</a>";
