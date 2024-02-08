@@ -36,21 +36,29 @@ if ($_FILES["profilePic"]["size"] > 500000) { // 500KB, modifica se necessario
 }
 
 // Permetti solo alcuni formati di file
-if($imageFileType != "jpg" ) {
-    echo "Spiacente, sono permessi solo file JPG.";
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" ) {
+    echo "Spiacente, sono permessi solo file JPG, PNG e GIF.";
     echo "<br>";
     $uploadOk = 0;
 }
+
 
 // Verifica se $uploadOk è impostato su 0 da un errore
 if ($uploadOk == 0) {
     echo "Spiacente, il tuo file non è stato caricato.";
 // se tutto è ok, prova a caricare il file
-} else {
+}
+else {
+    // Imposta il nuovo nome del file utilizzando l'username della sessione e l'estensione originale del file.
+    $fileExtension = pathinfo($_FILES["profilePic"]["name"], PATHINFO_EXTENSION);
+    $targetFile = "uploads/" . $_SESSION['username'] . "." . $fileExtension;
+
+    // Sposta il file caricato nella cartella di destinazione con il nuovo nome.
     if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $targetFile)) {
-        echo "Il file ". htmlspecialchars( basename( $_FILES["profilePic"]["name"])). " è stato caricato.";
+        echo "Il file è stato caricato e rinominato in: " . htmlspecialchars($_SESSION['username'] . "." . $fileExtension);
     } else {
         echo "Si è verificato un errore durante il caricamento del tuo file.";
+        }
     }
-}
+    
 ?>
