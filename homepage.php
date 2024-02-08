@@ -4,22 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="homepage-style.css">
+    <link rel="stylesheet" href="headerstyle.css">
     <title>WikiCar Vintage</title>
     <link rel="icon" href="img/other-img/logo.png" type="image/x-icon">
     <link rel="shortcut icon" href="img/other-img/logo.png" type="image/x-icon">
+
     <style>
-        /* #background-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-            background-image: url('img/other-img/sfondo.jpg');
-            background-size: cover;
-            transition: transform 0.3s ease-out, filter 0.3s ease-out; Aggiunto filtro alla transizione
-            filter: blur(0px); /* Aggiungi il filtro di sfocatura con un valore iniziale di 0px
-        } */
         #background-video {
             position: fixed;
             margin: 0;
@@ -90,11 +80,12 @@
             echo '</div>';
         
             // Pulsante Dettagli o Confronta
+            echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-                echo '<a href="/path/to/confronto.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Confronta</a>';
-            } else {
-                echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
-            }
+                // Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ?
+                echo '<a href="javascript:void(0);" onclick="aggiungiAlGarage(\'' . htmlspecialchars($auto['id']). '\')" class="btn">Aggiungi al Garage</a>';
+                echo '<a href="javascript:void(0);" onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</a>';
+            } 
             echo '</div>';
         }    
 
@@ -171,13 +162,41 @@
                 container.style.transform = `translateX(${offset}%)`;
                 requestAnimationFrame(animate);
             }
-
+            
             // Chiama la funzione animate
             animate();
 
             // Chiama la funzione in modo ricorsivo dopo 2 secondi
             setTimeout(showSlides, 3000); // Cambia slide ogni 3 secondi
+
+}
+
+            function salvaAutoConfronto(idAuto) {
+                var nomeCookie = "autoConfronto_" + idAuto;
+                var valoreCookie = idAuto;
+                var scadenza = new Date();
+                scadenza.setTime(scadenza.getTime() + (60 * 60 * 1000)); // 1 ora
+                document.cookie = nomeCookie + "=" + valoreCookie + ";expires=" + scadenza.toUTCString() + ";path=/";
+                alert('Auto aggiunta al confronto!'); // Messaggio di conferma
         }
+
+    function aggiungiAlGarage(idAuto) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "aggiungi_al_garage.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            if (xhr.responseText === "success") {
+                alert("Auto aggiunta al garage con successo!");
+            } else {
+                alert("Errore: " + xhr.responseText);
+            }
+        }
+    };
+    xhr.send("idAuto=" + encodeURIComponent(idAuto));
+}
+
+
 
     </script>
 

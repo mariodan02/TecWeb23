@@ -28,5 +28,6 @@ function validateFormSignUp() {
         return false;
     }
     
+    
     return true;
 }

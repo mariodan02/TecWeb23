@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Registrazione - WikiCar Vintage</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="headerstyle.css">
 <script src="inputValidation.js"></script>
 </head>
 <?php
@@ -33,6 +34,15 @@
 				//Se l'utente non risulta precedentemente registrato, si procede all'inserimento del nuovo utente
 				if(insert_utente($username, $email, $password)){
 					echo "<script type=\"text/javascript\"> alert(\"Utente registrato con successo. Effettua il login\");</script>";
+					$garageId = creaGaragePerUtente($username);
+					$_SESSION['username'] = $username;
+					$_SESSION['logged_in'] = true;
+					header('Location: homepage.php'); // Sostituisci '/homepage.php' con il percorso effettivo della tua homepage
+					exit();
+					if ($garageId === false) {
+    				echo "error: Impossibile creare un garage per l'utente.";
+    				// Gestire l'errore 
+					}
 				}
 				else{
 					echo "<script type=\"text/javascript\"> alert(\"Errore durante la registrazione. Riprova\");</script>";
@@ -86,7 +96,6 @@ function username_exist($username){
 	require "tswdb.php";
 	// Connessione al database
 	$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
-	echo "Connessione al database avvenuta con successo<br/>";
 	$sql = "SELECT username FROM utenti WHERE username=$1";
 	$prep = pg_prepare($db, "sqlUsername", $sql);
 	$ret = pg_execute($db, "sqlUsername", array($username));
@@ -109,7 +118,6 @@ function insert_utente($username, $email, $password){
 	require "tswdb.php";
 	// Connessione al database
 	$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
-	echo "Connessione al database avvenuta con successo<br/>";
 	$hash = password_hash($password, PASSWORD_DEFAULT);
 	$sql = "INSERT INTO utenti(username, email, password) VALUES($1, $2, $3)";
 	$prep = pg_prepare($db, "insertUser", $sql);
@@ -122,5 +130,19 @@ function insert_utente($username, $email, $password){
 		return true;
 	}
 }
+
+function creaGaragePerUtente($username) {
+	require "tswdb.php";
+	// Connessione al database
+	$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
+    $result = pg_query_params($db, "INSERT INTO garage (username) VALUES ($1) RETURNING id", array($username));
+    if ($result) {
+        $row = pg_fetch_assoc($result);
+        return $row['id']; // Restituisce l'ID del nuovo garage creato
+    } else {
+        return false; // La creazione del garage è fallita
+    }
+}
+
 ?>
 
