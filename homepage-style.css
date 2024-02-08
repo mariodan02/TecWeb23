@@ -157,13 +157,33 @@ section {padding: 2em;}
     padding: 20px;
 }
 
+.container-reserved {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 250px;
+}
+
 .form-container {
-    border: solid 5px red;
+    border: solid 5px rgb(112, 112, 99);
     float: left;
     background-color: #FDF5DC;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container-reserved {
+    margin-left: 100px;
+    border: solid 5px rgb(112, 112, 99);
+    float: left;
+    background-color: #FDF5DC;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 input[type="text"],
@@ -180,4 +200,7 @@ input[type="password"]{
     margin: 20px 0;
 }
 
+.beige-text {
+    color: #fdf4dc;
+}
   

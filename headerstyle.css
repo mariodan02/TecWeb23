@@ -9,7 +9,7 @@
     font-size: 16px;  
     border: none;
     outline: none;
-    color:  #f9f9f9;
+    color:  #fdf4dc;
     padding: 14px 16px;
     background-color: inherit;
     font-family: inherit; /* Importante per l'allineamento verticale su tutti i browser */
@@ -20,7 +20,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #fdf4dc;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -46,3 +46,11 @@
     display: block;
   }
   
+  input[type="text"] {
+    color: black; /* Colore del testo */
+    background-color:#fdf4dc; /* Colore dello sfondo */
+    border: none; /* Rimuove il bordo */
+    padding: 10px; /* Aggiunge spazio intorno al testo */
+    border-radius: 5px; /* Aggiunge bordi arrotondati */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Aggiunge ombra */
+}

@@ -13,13 +13,14 @@
 ?>
 
 <body>
-<div class="form-container">
+<div class="container-reserved">
     <?php
     require "tswdb.php";
-    
+
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         $username = $_SESSION['username'] ?? 'user';
-        echo "Ciao, " . htmlspecialchars($username) . "! <a href='logout.php'>Effettua il logout</a>";
+        echo '<span class="beige-text">Ciao,  </span>' . '<span class="beige-text">' . htmlspecialchars($username) . '</span>';
+        
 
         // Connettiti al database
         $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
@@ -58,17 +59,19 @@
                 echo "<p>Non ci sono auto nel tuo garage.</p>";
             }
         } else {
-            echo "<p>Garage non trovato.</p>";
+            echo '<p class="beige-text"> Garage non trovato.</p>';
         }
+
+        echo "<a href='logout.php'>Effettua il logout</a>";
         pg_close($db);
 
     } else {
         echo "Non riusciamo a riconoscerti! Effettua l'<a href='login.php'>accesso</a> se sei già registrato o <a href='registrazione.php'>registrati</a> se è la prima volta che vieni a trovarci!";
     }
     ?>
-</div>    
+
     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
-        <div class="container">
+        <div class="form-container-reserved">
             <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
                 Seleziona immagine:
                 <input type="file" name="profilePic" id="profilePic">
@@ -76,8 +79,10 @@
             </form>
         </div>
     <?php endif; ?>
+
+</div>    
       
-</div>
+
 
 <?php
     include 'footer.php';
