@@ -37,7 +37,7 @@
 					$garageId = creaGaragePerUtente($username);
 					$_SESSION['username'] = $username;
 					$_SESSION['logged_in'] = true;
-					header('Location: homepage.php'); // Sostituisci '/homepage.php' con il percorso effettivo della tua homepage
+					header('Location: homepage.php'); 
 					exit();
 					if ($garageId === false) {
     				echo "error: Impossibile creare un garage per l'utente.";
