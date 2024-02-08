@@ -1,0 +1,15 @@
+[
+    {
+      "title": "Registrati",
+      "url": "http://localhost:3000/TecWeb23/registrazione.php"
+    },
+    {
+      "title": "Yahoo",
+      "url": "https://www.yahoo.com"
+    },
+    {
+      "title": "Bing",
+      "url": "https://www.bing.com"
+    }
+  ]
+  
