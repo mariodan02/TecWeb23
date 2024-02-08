@@ -19,8 +19,8 @@
                     </div>
                 </li>
             <?php else: ?>
-                <!-- Se l'utente non è loggato, mostra il link per accedere -->
-                <li><a href="login.php">Accedi</a></li>
+                <!-- Se l'utente non è loggato, mostra il link per creare un account -->
+                <li><a href="registrazione.php">Registrati</a></li>
             <?php endif; ?>
         </ul>
     </nav>

@@ -181,23 +181,21 @@
         }
 
     function aggiungiAlGarage(idAuto) {
-        // Esegui una richiesta HTTP POST per aggiungere l'auto al garage
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "aggiungi_al_garage.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Gestisci la risposta dal server
-                if (xhr.responseText === "success") {
-                    alert("Auto aggiunta al garage con successo!");
-                } else {
-                    alert("Si è verificato un errore durante l'aggiunta dell'auto al garage.");
-                }
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "aggiungi_al_garage.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            if (xhr.responseText === "success") {
+                alert("Auto aggiunta al garage con successo!");
+            } else {
+                alert("Errore: " + xhr.responseText);
             }
-        };
-        // Invia l'ID dell'auto come parametro nella richiesta POST
-        xhr.send("idAuto=" + encodeURIComponent(idAuto));
-    }
+        }
+    };
+    xhr.send("idAuto=" + encodeURIComponent(idAuto));
+}
+
 
 
     </script>
