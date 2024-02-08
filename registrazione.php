@@ -81,7 +81,7 @@
         </form>
       </div>
     <div class="branding">
-      <img src="img/other-img/wikicar-logo.png" alt="WikiCar Vintage">
+      <img src="img/other-img/wikicar-logo.png" alt="WikiCar Vintage" width="600px" height="600px">
     </div>
   </div>
 </div>

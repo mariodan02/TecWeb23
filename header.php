@@ -43,7 +43,7 @@ function showResult(str) {
                 <!-- Se l'utente non è loggato, mostra il link per creare un account -->
                 <li><a href="registrazione.php">Registrati</a></li>
             <?php endif; ?>
-            <li><input type="text" size="30" onkeyup="showResult(this.value)" > <div id="livesearch"></div> </li>
+            <li><input type="text" size="30" onkeyup="showResult(this.value)" class="textf-head"> <div id="livesearch"></div> </li>
         </ul>
     </nav>
 </header>

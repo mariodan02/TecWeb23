@@ -1,6 +1,5 @@
 /* Stile per il menu a tendina */
 .dropdown {
-    float: left;
     overflow: hidden;
   }
   
@@ -46,11 +45,21 @@
     display: block;
   }
   
-  input[type="text"] {
+  .textf-head {
     color: black; /* Colore del testo */
     background-color:#fdf4dc; /* Colore dello sfondo */
     border: none; /* Rimuove il bordo */
     padding: 10px; /* Aggiunge spazio intorno al testo */
     border-radius: 5px; /* Aggiunge bordi arrotondati */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Aggiunge ombra */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  display: inline-block;
+  margin-right: 10px; /* Aggiungi spazio tra gli elementi */
 }
