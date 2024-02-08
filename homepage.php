@@ -81,8 +81,11 @@
         
             // Pulsante Dettagli o Confronta
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-                echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>';
-            } else {
+                // Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ?
+                echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
+                echo '<a href="javascript:void(0);" onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</a>';
+            } 
+            else {
                 echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
             }
             echo '</div>';
