@@ -51,7 +51,7 @@ function showResult(str) {
                     } elseif (file_exists($fileBase . ".gif")) {
                         echo '<img src="' . $fileBase . '.gif" alt="" class="personal-area-icon">';
                     } else {
-                        echo '<img src="uploads/user.png" alt="" class="personal-area-icon">';
+                        echo '<img src="user.png" alt="" class="personal-area-icon">';
                     }
                   ?>
                 </li>
