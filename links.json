@@ -4,16 +4,20 @@
       "url": "registrazione.php"
     },
     {
-      "title": "Yahoo",
-      "url": "https://www.yahoo.com"
-    },
-    {
-      "title": "Bing",
-      "url": "https://www.bing.com"
-    },
-    {
       "title": "Area Personale",
       "url": "reserved.php"
+    },
+    {
+      "title": "Confronta",
+      "url": "confronta.php"
+    },
+    {
+      "title": "Homepage",
+      "url": "homepage.php"
+    },
+    {
+      "title": "Accedi",
+      "url": "login.php"
     }
   ]
   
