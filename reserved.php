@@ -6,6 +6,32 @@
 <title>Area Riservata - WikiCar Vintage</title>
 <link rel="stylesheet" href="homepage-style.css">
 <link rel="stylesheet" href="headerstyle.css">
+
+<style>
+#drop_zone {
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    color: #ccc;
+    margin: 10px 0;
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+#drop_zone:hover {
+    background-color: #e8e8e8;
+}
+
+#drop_zone.dragover {
+    background-color: #e0e0e0;
+    border-color: #333;
+}
+
+
+</style>
+
+
 </head>
 
 <?php
@@ -14,17 +40,20 @@
 
 <body>
 
-<?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
-    <div class="container">
+<div class="container">
+    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
         <div class="form-container-reserved">
             <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
                 Seleziona immagine:
-                <input type="file" name="profilePic" id="profilePic">
+                <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);">
+                    Trascina qui un'immagine
+                </div>
+                <input type="file" name="profilePic" id="profilePic" hidden>
                 <input type="submit" value="Carica" name="submit">
             </form>
         </div>
-    </div>
     <?php endif; ?>
+</div>
 
 <div class="container-reserved-auto">
     <?php
@@ -95,6 +124,44 @@
 <?php
     include 'footer.php';
 ?>
+
+<script>
+function dragOverHandler(ev) {
+    ev.preventDefault();
+    ev.currentTarget.classList.add('dragover');
+}
+
+function dragLeaveHandler(ev) {
+    ev.currentTarget.classList.remove('dragover');
+}
+
+function dropHandler(ev) {
+    ev.preventDefault();
+    ev.currentTarget.classList.remove('dragover');
+    processFile(ev.dataTransfer.files[0]);
+}
+
+function processFile(file) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var img = document.createElement("img");
+        img.src = e.target.result;
+        img.style.maxWidth = "200px";
+        img.style.maxHeight = "200px";
+        document.getElementById('drop_zone').innerHTML = '';
+        document.getElementById('drop_zone').appendChild(img);
+    };
+    reader.readAsDataURL(file);
+}
+
+document.getElementById('drop_zone').addEventListener('click', function() {
+    document.getElementById('profilePic').click();
+});
+
+document.getElementById('profilePic').addEventListener('change', function(event) {
+    processFile(event.target.files[0]);
+});
+</script>
 
 </body>
 </html>

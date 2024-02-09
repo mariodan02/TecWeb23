@@ -80,7 +80,7 @@
             echo '</div>';
         
             // Pulsante Dettagli o Confronta
-            echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
+            echo '<a href="dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                 // Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ?
                 echo '<a href="javascript:void(0);" onclick="aggiungiAlGarage(\'' . htmlspecialchars($auto['id']). '\')" class="btn">Aggiungi al Garage</a>';
