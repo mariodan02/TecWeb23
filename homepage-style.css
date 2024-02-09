@@ -83,7 +83,7 @@ section {padding: 2em;}
 
 #lista-auto {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;  /*gli elementi figli vanno a capo*/
     justify-content: space-around;
     align-items: stretch;
 }
@@ -170,7 +170,26 @@ section {padding: 2em;}
     justify-content: center;
     align-items: center;
     padding: 20px;
-    margin-top: 250px;
+    margin-top: 50px;
+}
+
+.container-reserved-auto {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.container-reserved-auto::-webkit-scrollbar {
+    width: 10px; /* Imposta la larghezza della barra di scorrimento */
+    height: 10px; /* Imposta l'altezza della barra di scorrimento */
+}
+
+.container-reserved-auto::-webkit-scrollbar-thumb {
+    background-color: beige; /* Imposta il colore della maniglia della barra di scorrimento */
+    border-radius: 10px; /* Imposta il bordo arrotondato della maniglia della barra di scorrimento */
 }
 
 .form-container {
@@ -183,15 +202,16 @@ section {padding: 2em;}
 }
 
 .form-container-reserved {
-    margin-left: 100px;
     border: solid 5px rgb(112, 112, 99);
-    float: left;
     background-color: #FDF5DC;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 200px;
+    width: 500px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
 }
 
 input[type="text"],

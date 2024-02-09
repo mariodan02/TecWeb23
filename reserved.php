@@ -13,14 +13,26 @@
 ?>
 
 <body>
-<div class="container-reserved">
+
+<?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
+    <div class="container">
+        <div class="form-container-reserved">
+            <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
+                Seleziona immagine:
+                <input type="file" name="profilePic" id="profilePic">
+                <input type="submit" value="Carica" name="submit">
+            </form>
+        </div>
+    </div>
+    <?php endif; ?>
+
+<div class="container-reserved-auto">
     <?php
     require "tswdb.php";
 
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         $username = $_SESSION['username'] ?? 'user';
-        echo '<span class="beige-text">Ciao,  </span>' . '<span class="beige-text">' . htmlspecialchars($username) . '</span>';
-        
+        echo '<span class="beige-text">Ciao,  </span>' . '<span class="beige-text">' . htmlspecialchars($username) . '</span>' . '<span class="beige-text"> ' . '&nbsp;ecco le tue auto: </span>';
 
         // Connettiti al database
         $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
@@ -54,7 +66,7 @@
                     echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
                     
                     // Pulsante Rimuovi
-                    echo '<a href="rimuovi_auto.php?id=' . htmlspecialchars($auto['id']) . '" class="btn" style="background-color: red;">Rimuovi</a>';
+                    echo '<a href="rimuovi_auto.php?id=' . htmlspecialchars($auto['id']) . '" class="btn" style="background-color: rgb(118, 0, 0)">Rimuovi</a>';
                 echo '</div>';
 
                 }
@@ -74,19 +86,9 @@
     }
     ?>
 
-    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
-        <div class="form-container-reserved">
-            <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
-                Seleziona immagine:
-                <input type="file" name="profilePic" id="profilePic">
-                <input type="submit" value="Carica" name="submit">
-            </form>
-        </div>
-    <?php endif; ?>
-
 </div>    
    
-<div style="text-align: center;">
+<div style="text-align: center;"><br><br>
 <a href="logout.php">Effettua il logout</a>
 </div>
 

@@ -19,7 +19,7 @@
         function rimuoviAuto(idAuto) {
             var confirmed = confirm("Sei sicuro di voler rimuovere questa auto?");
             if (confirmed) {
-                // Invia una richiesta GET alla pagina corrente con un parametro speciale
+                // Invia una richiesta GET alla pagina corrente con un parametro speciale per la rimozione -> rimuovi=idAuto
                 window.location.href = "?rimuovi=" + idAuto;
             }
         }
@@ -39,7 +39,7 @@
     }
 
     
-    // Verifica se è stato richiesto di rimuovere un'auto
+    // Verifica se è stato richiesto di rimuovere un'auto vedi riga 22
     if (isset($_GET['rimuovi'])) {
         $idAutoDaRimuovere = intval($_GET['rimuovi']);
         $cookieName = "autoConfronto_" . $idAutoDaRimuovere;
