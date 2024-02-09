@@ -35,25 +35,30 @@
             $autoResult = pg_query_params($db, "SELECT a.* FROM auto a JOIN garage_auto ga ON a.id = ga.auto_id WHERE ga.garage_id = $1", array($garageId));
             if ($autoResult) {
                 echo "<ul>";
-                while ($autoRow = pg_fetch_assoc($autoResult)) {
+                echo '<div class="container">';
+                while ($auto = pg_fetch_assoc($autoResult)) {
 
                 echo '<div class="card">';
             
                     // Aggiunta dell'immagine dell'auto
-                    echo '<img src="img/card-img/' . htmlspecialchars($autoRow['img']) . '.jpg" alt="Immagine di ' . htmlspecialchars($autoRow['nome']) . '">';
+                    echo '<img src="img/card-img/' . htmlspecialchars($auto['img']) . '.jpg" alt="Immagine di ' . htmlspecialchars($auto['nome']) . '">';
         
                     // Sezione delle informazioni dell'auto
                     echo '<div class="card-info">';
-                    echo '<h3>' . htmlspecialchars($autoRow['nome']) . '</h3>';
-                    echo '<p>Anno: ' . htmlspecialchars($autoRow['anno']) . '</p>';
-                    echo '<p>Prezzo: ' . htmlspecialchars($autoRow['prezzo']) . '</p>';
+                    echo '<h3>' . htmlspecialchars($auto['nome']) . '</h3>';
+                    echo '<p>Anno: ' . htmlspecialchars($auto['anno']) . '</p>';
+                    echo '<p>Prezzo: ' . htmlspecialchars($auto['prezzo']) . '</p>';
                     echo '</div>';
                 
-                    // Pulsante Dettagli o Confronta
-                    echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($autoRow['id']) . '" class="btn">Dettagli</a>';
+                    // Pulsante Dettagli
+                    echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
+                    
+                    // Pulsante Rimuovi
+                    echo '<a href="rimuovi_auto.php?id=' . htmlspecialchars($auto['id']) . '" class="btn" style="background-color: red;">Rimuovi</a>';
                 echo '</div>';
 
                 }
+                echo "</div>";
                 echo "</ul>";
             } else {
                 echo "<p>Non ci sono auto nel tuo garage.</p>";
@@ -62,7 +67,6 @@
             echo '<p class="beige-text" style="margin-left: 5px; margin-right: 5px;"> Garage non trovato. </p>';
         }
 
-        echo "<a href='logout.php'>Effettua il logout</a>";
         pg_close($db);
 
     } else {
@@ -81,8 +85,10 @@
     <?php endif; ?>
 
 </div>    
-      
-
+   
+<div style="text-align: center;">
+<a href="logout.php">Effettua il logout</a>
+</div>
 
 <?php
     include 'footer.php';
@@ -90,3 +96,4 @@
 
 </body>
 </html>
+
