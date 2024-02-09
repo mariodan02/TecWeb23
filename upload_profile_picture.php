@@ -39,29 +39,27 @@ if(isset($_POST["submit"])) {
     if($check !== false) {
         $uploadOk = 1;
     } else {
-        echo "Il file caricato non é un'immagine.";
-        echo "<br>";
+        echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p>Il file caricato non é un'immagine.</p></center>";
         $uploadOk = 0;
     }
 }
 
 // Verifica la dimensione del file
 if ($_FILES["profilePic"]["size"] > 500000) { // 500KB, modifica se necessario
-    echo "Spiacente, il tuo file è troppo grande.";
+    echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p>Spiacente, il tuo file é troppo grande.</p></center>";
     $uploadOk = 0;
 }
 
 // Permetti solo alcuni formati di file
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" ) {
-    echo "Spiacente, sono permessi solo file JPG, PNG e GIF.";
-    echo "<br>";
+if($imageFileType != "png") {
+    echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p>Spiacente, sono permessi solo file PNG.</p></center>";
     $uploadOk = 0;
 }
 
 
 // Verifica se $uploadOk è impostato su 0 da un errore
 if ($uploadOk == 0) {
-    echo "Spiacente, il tuo file non è stato caricato.";
+    echo "<center><p>Il tuo file non é stato caricato, riprova.</p></center>";
 // se tutto è ok, prova a caricare il file
 }
 else {
@@ -71,7 +69,7 @@ else {
 
     // Sposta il file caricato nella cartella di destinazione con il nuovo nome.
     if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $targetFile)) {
-        echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p>Il file è stato caricato e rinominato: " . htmlspecialchars($_SESSION['username'] . "." . $fileExtension) . "</p></center>";
+        echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p>La tua foto profilo è stata caricata con successo.</p></center>";
         echo "<br><center><p><a href='homepage.php'>Torna alla homepage</a>" . "</p></center>";
         } else {
         echo "Si è verificato un errore durante il caricamento del tuo file.";

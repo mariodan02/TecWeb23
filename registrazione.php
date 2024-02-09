@@ -27,8 +27,8 @@
 
 		//Si controlla la presenza di username duplicati
 		if (!empty($password)){
-			if(username_exist($username)){ // Richiama la funzione username_exist($username)
-				echo "<script type=\"text/javascript\"> alert(\"Username $username già esistente. Riprova\");</script>";
+			if(username_exist($username) || $username==="user" ){ // Richiama la funzione username_exist($username)
+				echo "<script type=\"text/javascript\"> alert(\"Username $username già esistente oppure non valido. Riprova\");</script>";
 			}
 			else{
 				//Se l'utente non risulta precedentemente registrato, si procede all'inserimento del nuovo utente
