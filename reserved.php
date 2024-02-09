@@ -59,14 +59,14 @@
                 echo "<p>Non ci sono auto nel tuo garage.</p>";
             }
         } else {
-            echo '<p class="beige-text"> Garage non trovato.</p>';
+            echo '<p class="beige-text" style="margin-left: 5px; margin-right: 5px;"> Garage non trovato. </p>';
         }
 
         echo "<a href='logout.php'>Effettua il logout</a>";
         pg_close($db);
 
     } else {
-        echo "Non riusciamo a riconoscerti! Effettua l'<a href='login.php'>accesso</a> se sei già registrato o <a href='registrazione.php'>registrati</a> se è la prima volta che vieni a trovarci!";
+        echo "<font color=beige> Non riusciamo a riconoscerti! Effettua l'</font> <a href='login.php' style='margin-left: 5px; margin-right: 5px;'> accesso </a> <font color=beige> se sei già registrato o </font> <a href='registrazione.php' style='margin-left: 5px; margin-right: 5px;'> registrati </a> <font color=beige> se è la prima volta che vieni a trovarci! </font>";
     }
     ?>
 

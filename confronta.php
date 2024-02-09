@@ -108,7 +108,9 @@
 <?php else: ?>
     <!-- Mostra un messaggio se nessuna auto è stata selezionata -->
     <!-- Bisogna creare un container -->
-    <p><br><br><br><br><br><br><br><br><br><br><br>Nessuna auto selezionata per il confronto.</p>
+    <div class="container-confronta">
+    <p class="beige-text">Nessuna auto selezionata per il confronto.</p>
+    </div>
 <?php endif; ?>
 
 
