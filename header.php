@@ -39,6 +39,22 @@ function showResult(str) {
                         <a href="logout.php">Logout</a>
                     </div>
                 </li>
+                <li>  
+                  <?php
+                    $username = htmlspecialchars($_SESSION['username']);
+                    $fileBase = "uploads/" . $username;
+
+                    if (file_exists($fileBase . ".jpg")) {
+                        echo '<img src="' . $fileBase . '.jpg" alt="" class="personal-area-icon">';
+                    } elseif (file_exists($fileBase . ".png")) {
+                        echo '<img src="' . $fileBase . '.png" alt="" class="personal-area-icon">';
+                    } elseif (file_exists($fileBase . ".gif")) {
+                        echo '<img src="' . $fileBase . '.gif" alt="" class="personal-area-icon">';
+                    } else {
+                        echo '<img src="user.png" alt="" class="personal-area-icon">';
+                    }
+                  ?>
+                </li>
             <?php else: ?>
                 <!-- Se l'utente non è loggato, mostra il link per creare un account -->
                 <li><a href="registrazione.php">Registrati</a></li>
