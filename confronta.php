@@ -84,6 +84,7 @@
 ?>
 
 <?php if (count($auto_selezionate) > 0): ?>
+    <div class="container-confronta">
     <?php foreach ($auto_selezionate as $auto): ?>
         <div class="card">
             <!-- Aggiunta dell'immagine dell'auto -->
@@ -96,11 +97,14 @@
                 <p>Prezzo: <?php echo htmlspecialchars($auto['prezzo']); ?></p>
                 <!-- Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ? -->
                 <a href="/path/to/dettagli.php?id=<?php echo htmlspecialchars($auto['id']); ?>" class="btn">Dettagli</a>
-                </div>
             </div>
+        </div>
     <?php endforeach; ?>
+    </div>
     <!-- Pulsante per azzerare i cookie -->
-    <button onclick="clearCookies()" class="btn">Rimuovi tutte le auto selezionate</button>';
+    <div class="container">
+    <button onclick="clearCookies()" class="btn" style="text-align: center;">Rimuovi tutte le auto selezionate</button>';
+    </div>
 <?php else: ?>
     <!-- Mostra un messaggio se nessuna auto è stata selezionata -->
     <!-- Bisogna creare un container -->
