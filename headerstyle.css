@@ -65,6 +65,9 @@ ul li {
 }
 
 .personal-area-icon {
+  position: relative; /* Aggiungi posizionamento relativo */
+  top: 15px;
+  margin-right: 10px;
   border-radius: 50%; /* Per rendere l'immagine un cerchio */
   width: 50px; 
   height: 50px;
