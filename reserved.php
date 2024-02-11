@@ -92,7 +92,7 @@
                     echo '</div>';
                 
                     // Pulsante Dettagli
-                    echo '<a href="/path/to/dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
+                    echo '<a href="dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
                     
                     // Pulsante Rimuovi
                     echo '<a href="rimuovi_auto.php?id=' . htmlspecialchars($auto['id']) . '" class="btn" style="background-color: rgb(118, 0, 0)">Rimuovi</a>';
