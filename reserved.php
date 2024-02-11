@@ -44,7 +44,7 @@
     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
         <div class="form-container-reserved">
             <form action="upload_profile_picture.php" method="post" enctype="multipart/form-data">
-                Seleziona immagine:
+                Seleziona immagine di profilo:
                 <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);">
                     Trascina qui un'immagine
                 </div>
