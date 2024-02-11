@@ -16,8 +16,61 @@
       "url": "homepage.php"
     },
     {
-      "title": "Accedi",
-      "url": "login.php"
+      "title": "Ford Mustang",
+      "url": "https://it.wikipedia.org/wiki/Ford_Mustang"
+    },
+    {
+      "title": "Volkswagen Beetle",
+      "url": "https://it.wikipedia.org/wiki/Volkswagen_Maggiolino"
+    },
+    {
+      "title": "Chevrolet Impala",
+      "url": "https://it.wikipedia.org/wiki/Chevrolet_Impala"
+    },
+    {
+      "title": "Porsche 911",
+      "url": "https://it.wikipedia.org/wiki/Porsche_911"
+    },
+    {
+      "title": "Jaguar E-TYPE",
+      "url": "https://it.wikipedia.org/wiki/Jaguar_E-Type"
+    },
+    {
+      "title": "Toyota 2000GT",
+      "url": "https://it.wikipedia.org/wiki/Toyota_2000GT"
+    },
+    {
+      "title": "BMW 2002",
+      "url": "https://it.wikipedia.org/wiki/BMW_Serie_02"
+    },
+    {
+      "title": "Lamborghini Miura",
+      "url": "https://it.wikipedia.org/wiki/Lamborghini_Miura"
+    },
+    {
+      "title": "Alfa Romeo Giulia GTV",
+      "url": "https://it.wikipedia.org/wiki/Alfa_Romeo_GTV"
+    },{
+      "title": "Mercedes Benz 300SL",
+      "url": "https://it.wikipedia.org/wiki/Mercedes-Benz_W198"
+    },{
+      "title": "Ferrari F40",
+      "url": "https://it.wikipedia.org/wiki/Ferrari_F40"
+    },{
+      "title": "Fiat 500",
+      "url": "https://it.wikipedia.org/wiki/Fiat_Nuova_500"
+    },{
+      "title": "Lancia Delta Integrale",
+      "url": "https://it.wikipedia.org/wiki/Pagina1"
+    },{
+      "title": "Citroen DS",
+      "url": "https://it.wikipedia.org/wiki/Citro%C3%ABn_DS"
+    },{
+      "title": "Aston Martin DB5",
+      "url": "https://it.wikipedia.org/wiki/Aston_Martin_DB5"
+    },{
+      "title": "Shelby Cobra",
+      "url": "https://it.wikipedia.org/wiki/AC_Cobra"
     }
   ]
   

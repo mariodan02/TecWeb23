@@ -69,10 +69,10 @@ else {
 
     // Sposta il file caricato nella cartella di destinazione con il nuovo nome.
     if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $targetFile)) {
-        echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p>La tua foto profilo è stata caricata con successo.</p></center>";
+        echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p style class='beige-text'>La tua foto profilo è stata caricata con successo.</p></center>";
         echo "<br><center><p><a href='homepage.php'>Torna alla homepage</a>" . "</p></center>";
         } else {
-        echo "Si è verificato un errore durante il caricamento del tuo file.";
+        echo "<Si è verificato un errore durante il caricamento del tuo file.";
         }
     }
     
