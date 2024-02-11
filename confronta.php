@@ -96,7 +96,7 @@
                 <p>Anno: <?php echo htmlspecialchars($auto['anno']); ?></p>
                 <p>Prezzo: <?php echo htmlspecialchars($auto['prezzo']); ?></p>
                 <!-- Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ? -->
-                <a href="/path/to/dettagli.php?id=<?php echo htmlspecialchars($auto['id']); ?>" class="btn">Dettagli</a>
+                echo '<a href="dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
             </div>
         </div>
     <?php endforeach; ?>

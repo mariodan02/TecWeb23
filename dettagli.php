@@ -13,45 +13,72 @@
 <body>
 <?php include 'header.php'; ?>
 <?php
-require "tswdb.php"; // Assicurati che questo percorso sia corretto
-
-// Controlla se l'ID è presente nella query string
+// Controlla se l'ID è presente nella query string e se è numerico
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $autoId = $_GET['id'];
 
-    // Connettiti al database
-    $db = pg_connect($connection_string); // Aggiungi gestione degli errori se necessario
-    $query = "SELECT * FROM auto WHERE id = $1";
-    $result = pg_query_params($db, $query, array($autoId));
-
-    if ($result && pg_num_rows($result) > 0) {
-        $auto = pg_fetch_assoc($result);
-
-        // Mostra i dettagli dell'auto
-        echo '<div class="card">';
-            
-        // Aggiunta dell'immagine dell'auto
-        echo '<img src="img/card-img/' . htmlspecialchars($auto['img']) . '.jpg" alt="Immagine di ' . htmlspecialchars($auto['nome']) . '">';
-
-        // Sezione delle informazioni dell'auto
-        echo '<div class="card-info">';
-        echo '<h3>' . htmlspecialchars($auto['nome']) . '</h3>';
-        echo '<p>Anno: ' . htmlspecialchars($auto['anno']) . '</p>';
-        echo '<p>Prezzo: ' . htmlspecialchars($auto['prezzo']) . '</p>';
-        echo '</div>';
-    
-        // Pulsante Dettagli o Confronta
-        echo '<a href="homepage.php" class="btn">Torna alla homepage</a>';
-        echo '</div>';
-} else {
-        echo '<p>Auto non trovata.</p>';
+    switch ($autoId) {
+        case 0:
+            header('Location: https://it.wikipedia.org/wiki/Ford_Mustang');
+            exit;
+        case 1:
+            header('Location: https://it.wikipedia.org/wiki/Volkswagen_Maggiolino');
+            exit;
+        case 2:
+            header('Location: https://it.wikipedia.org/wiki/Chevrolet_Impala');
+            exit;
+        case 3:
+            header('Location: https://it.wikipedia.org/wiki/Porsche_911');
+            exit;
+        case 4:
+            header('Location: https://it.wikipedia.org/wiki/Jaguar_E-Type');
+            exit;
+        case 5:
+            header('Location: https://it.wikipedia.org/wiki/Toyota_2000GT');
+            exit;
+        case 6:
+            header('Location: https://it.wikipedia.org/wiki/BMW_Serie_02');
+            exit;
+        case 7:
+            header('Location: https://it.wikipedia.org/wiki/Lamborghini_Miura');
+            exit;
+        case 8:
+            header('Location: https://it.wikipedia.org/wiki/Alfa_Romeo_GTV');
+            exit;
+        case 9:
+            header('Location: https://it.wikipedia.org/wiki/Mercedes-Benz_W198');
+            exit;
+        case 10:
+            header('Location: https://it.wikipedia.org/wiki/Ferrari_F40');
+            exit;
+        case 11:
+            header('Location: https://it.wikipedia.org/wiki/Fiat_Nuova_500');
+            exit;
+        case 12:
+            header('Location: https://it.wikipedia.org/wiki/Pagina1');
+            exit;
+        case 13:
+            header('Location: https://it.wikipedia.org/wiki/Citro%C3%ABn_DS');
+            exit;
+        case 14:
+            header('Location: https://it.wikipedia.org/wiki/Aston_Martin_DB5');
+            exit;
+        case 15:
+            header('Location: https://it.wikipedia.org/wiki/AC_Cobra');
+            exit;
+        default:
+            echo '<p>ID non corrisponde a un auto conosciuta.</p>';
+            break;
     }
-
-    pg_close($db);
 } else {
     echo '<p>ID non valido.</p>';
 }
+// Chiudi la connessione al database, se aperta
+if (isset($db)) {
+    pg_close($db);
+}
 ?>
+
 
 </body>
 
