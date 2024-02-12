@@ -9,7 +9,6 @@
     border: none;
     outline: none;
     color:  #fdf4dc;
-    margin: 10px;
     background-color: inherit;
     font-family: inherit; /* Importante per l'allineamento verticale su tutti i browser */
   }
