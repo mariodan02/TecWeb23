@@ -71,8 +71,8 @@
     <div class="slider-container">
         <div class="slider-inner">
             <img class="mySlides" src="img/card-img/Alfa Romeo Giulia GTV 1965.jpg" alt="Slide 1">
-            <img class="mySlides" src="img/other-img/sfondo.jpg" alt="Slide 2">
-            <img class="mySlides" src="img/other-img/sfondo 2.jpg" alt="Slide 3">
+            <img class="mySlides" src="img/other-img/slide1.jpg" alt="Slide 2">
+            <img class="mySlides" src="img/other-img/slide2.jpg" alt="Slide 3">
             <img class="mySlides" src="img/card-img/Delta.jpg" alt="Slide 4">
             <img class="mySlides" src="img/card-img/F40.jpg" alt="Slide 5">
         </div>

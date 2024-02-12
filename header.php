@@ -33,7 +33,7 @@ function showResult(str) {
                 <li class="dropdown">
         <!-- Verificare spazio -->
                   <br>
-                    <a href="javascript:void(0)" class="dropbtn">Area personale</a>
+                    <a href="javascript:void(0)" class="dropbtn">Area personale di <?php echo htmlspecialchars($_SESSION['username']); ?></a>
                     <div class="dropdown-content">
                         <a href="reserved.php">Profilo</a>
                         <a href="logout.php">Logout</a>
