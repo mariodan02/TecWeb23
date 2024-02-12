@@ -8,37 +8,6 @@
     <title>WikiCar Vintage</title>
     <link rel="icon" href="img/other-img/logo.png" type="image/x-icon">
     <link rel="shortcut icon" href="img/other-img/logo.png" type="image/x-icon">
-
-    <style>
-        #background-video {
-            position: fixed;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -1;
-            transition: transform 0.3s ease-out, filter 0.3s ease-out;
-            filter: blur(0px);
-        }
-
-        .slider-container {
-            max-width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .slider-inner {
-            display: flex;
-            transition: transform 2s ease-in-out; /* Tempo di transizione di 1 secondo */
-        }
-
-        .mySlides {
-            flex: 0 0 100%;
-            width: 100%;
-            height: auto;
-        }
-    </style>
 </head>
 
 <body>
@@ -114,7 +83,6 @@
     ?>  
 
     <script type="text/javascript">
-        
         window.addEventListener('scroll', function() {
             var scrollPosition = window.scrollY;
             var videoElement = document.getElementById('background-video');
@@ -123,12 +91,7 @@
 
             videoElement.style.transform = 'translateY(' + (-scrollPosition / 2) + 'px)';
             videoElement.style.filter = 'blur(' + blurValue + 'px)';
-        });
 
-    </script>
-
-    <script type="text/javascript">
-        window.addEventListener('scroll', function(){
             var header = document.querySelector('header');
             var scrolled = window.scrollY > 100; // Cambia il valore a seconda di quando vuoi che avvenga il cambio di colore
             if(scrolled){
@@ -136,15 +99,12 @@
             }else{
                 header.classList.remove('scrolled');
             }
-        });
-    </script>
+            });
 
-    <script type="text/javascript">
         let slideIndex = 0;
         showSlides();
 
         function showSlides() {
-            let i;
             let slides = document.getElementsByClassName("mySlides");
             let container = document.querySelector(".slider-inner");
 
@@ -202,9 +162,6 @@
     };
     xhr.send("idAuto=" + encodeURIComponent(idAuto));
 }
-
-
-
     </script>
 
 </body>
