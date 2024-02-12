@@ -52,8 +52,8 @@
     <div id="home" class="hero">
         <h1>Esplora il Fascino delle Auto d'Epoca</h1>
         <p>Scopri la bellezza e l'eleganza dei modelli che hanno fatto la storia dell'automobile.</p>
-        <a href="#auto" class="btn">Scopri di più</a>
-    </div>
+        <a href="javascript:void(0);" class="btn" onclick="scrollDown()">Scopri di più</a>
+        </div>
 
     <section id="lista-auto">
         <?php
@@ -171,14 +171,21 @@
 
 }
 
-            function salvaAutoConfronto(idAuto) {
-                var nomeCookie = "autoConfronto_" + idAuto;
-                var valoreCookie = idAuto;
-                var scadenza = new Date();
-                scadenza.setTime(scadenza.getTime() + (60 * 60 * 1000)); // 1 ora
-                document.cookie = nomeCookie + "=" + valoreCookie + ";expires=" + scadenza.toUTCString() + ";path=/";
-                alert('Auto aggiunta al confronto!'); // Messaggio di conferma
-        }
+    function salvaAutoConfronto(idAuto) {
+        var nomeCookie = "autoConfronto_" + idAuto;
+        var valoreCookie = idAuto;
+        var scadenza = new Date();
+        scadenza.setTime(scadenza.getTime() + (60 * 60 * 1000)); // 1 ora
+        document.cookie = nomeCookie + "=" + valoreCookie + ";expires=" + scadenza.toUTCString() + ";path=/";
+        alert('Auto aggiunta al confronto!'); // Messaggio di conferma
+    }
+
+    function scrollDown() {
+    // Effettua lo scorrimento della pagina
+    window.scrollBy({
+        top: 1000,
+    });
+}
 
     function aggiungiAlGarage(idAuto) {
     var xhr = new XMLHttpRequest();
