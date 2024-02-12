@@ -79,38 +79,31 @@
         } else {
             // Ciclo per ogni auto
             while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-                // Codice per gestire i dati delle auto
+                echo '<div class="card">';
+            
+                // Aggiunta dell'immagine dell'auto
+                echo '<img src="img/card-img/' . htmlspecialchars($auto['img']) . '.jpg" alt="Immagine di ' . htmlspecialchars($auto['nome']) . '">';
+    
+                // Sezione delle informazioni dell'auto
+                echo '<div class="card-info">';
+                echo '<h3>' . htmlspecialchars($auto['nome']) . '</h3>';
+                echo '<p>Anno: ' . htmlspecialchars($auto['anno']) . '</p>';
+                echo '<p>Prezzo: ' . htmlspecialchars($auto['prezzo']) . '</p>';
+                echo '</div>';
+            
+                // Pulsante Dettagli o Confronta
+                echo '<a href="dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
+                if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                    // Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ?
+                    echo '<a href="javascript:void(0);" onclick="aggiungiAlGarage(\'' . htmlspecialchars($auto['id']). '\')" class="btn">Aggiungi al Garage</a>';
+                    echo '<a href="javascript:void(0);" onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</a>';
+                } 
+                echo '</div>';
             }
         
             // Libera la risorsa risultato
             pg_free_result($result);
         }
-        // Ciclo per ogni auto
-        while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-            echo '<div class="card">';
-            
-            // Aggiunta dell'immagine dell'auto
-            echo '<img src="img/card-img/' . htmlspecialchars($auto['img']) . '.jpg" alt="Immagine di ' . htmlspecialchars($auto['nome']) . '">';
-
-            // Sezione delle informazioni dell'auto
-            echo '<div class="card-info">';
-            echo '<h3>' . htmlspecialchars($auto['nome']) . '</h3>';
-            echo '<p>Anno: ' . htmlspecialchars($auto['anno']) . '</p>';
-            echo '<p>Prezzo: ' . htmlspecialchars($auto['prezzo']) . '</p>';
-            echo '</div>';
-        
-            // Pulsante Dettagli o Confronta
-            echo '<a href="dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
-            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-                // Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ?
-                echo '<a href="javascript:void(0);" onclick="aggiungiAlGarage(\'' . htmlspecialchars($auto['id']). '\')" class="btn">Aggiungi al Garage</a>';
-                echo '<a href="javascript:void(0);" onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</a>';
-            } 
-            echo '</div>';
-        }    
-
-        // Liberare il risultato
-        pg_free_result($result);
 
         // Chiudere la connessione
         pg_close($db);
