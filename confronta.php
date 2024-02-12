@@ -88,16 +88,20 @@
 
 
 <?php if (count($auto_selezionate) > 0): ?>
-    <div class="container-confronta">
-        <!-- Form per selezionare l'ordine delle auto -->
+    <div class="container-confronta" style="margin-top: 240px;">
+
+    <!-- Form per selezionare l'ordine delle auto -->
     <form id="order-form" action="confronta.php" method="get">
-        <label for="ordine">Ordina per prezzo:</label>
-        <select name="ordine" id="ordine">
+        <label for="ordine" class="beige-text">Ordina per prezzo:</label>
+        <select name="ordine" id="ordine" style="background-color: beige; border-radius:20px;">
             <option value="crescente">Crescente</option>
             <option value="decrescente">Decrescente</option>
         </select>
-        <button type="submit">Ordina</button>
+        <button type="submit" style="background-color: beige; border-radius:10px;">Ordina</button>
     </form>
+
+    </div>
+    <div class="container-confronta">
     <?php foreach ($auto_selezionate as $auto): ?>
         <div class="card">
             <!-- Aggiunta dell'immagine dell'auto -->
