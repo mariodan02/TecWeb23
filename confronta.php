@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Confronta Auto</title>
-    <link rel="stylesheet" href="homepage-style.css">
-    <link rel="stylesheet" href="headerstyle.css">
+    <link rel="stylesheet" href="css/homepage-style.css">
+    <link rel="stylesheet" href="css/headerstyle.css">
     <script>
         function clearCookies() {
             document.cookie.split(";").forEach(function(c) {
