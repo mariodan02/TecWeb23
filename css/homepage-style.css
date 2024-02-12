@@ -162,8 +162,7 @@ section {padding: 2em;}
     justify-content: center;
     align-items: center;
     padding: 20px;
-    /*margin-top: 200px;*/
-}
+    }
 
 .container-reserved {
     display: flex;

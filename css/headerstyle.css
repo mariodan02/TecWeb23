@@ -1,6 +1,6 @@
 /* Stile per il menu a tendina */
 .dropdown {
-    overflow: hidden;
+    display: inline-block;
   }
   
   .dropdown .dropbtn {
@@ -9,10 +9,9 @@
     border: none;
     outline: none;
     color:  #fdf4dc;
-    padding: 14px 16px;
+    margin: 10px;
     background-color: inherit;
     font-family: inherit; /* Importante per l'allineamento verticale su tutti i browser */
-    margin: 0; /* Importante per l'allineamento verticale su Internet Explorer 11 */
   }
   
   /* Contenuto del menu a tendina (nascosto di default) */
@@ -23,6 +22,7 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    transform: translateX(45px) translateY(10px);
   }
   
   /* Links all'interno del menu a tendina */
@@ -54,12 +54,13 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Aggiunge ombra */
 }
 
-ul {
+menu ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-ul li {
+menu ul li {
   display: inline-block;
   margin-right: 10px; /* Aggiungi spazio tra gli elementi */
 }

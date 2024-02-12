@@ -24,6 +24,7 @@ function showResult(str) {
 <header>   
     <nav>
         <img src="img/other-img/logo_bianco.png" alt="logo">
+        <div class="menu"></div>
         <ul>
             <li><a href="homepage.php">Homepage</a></li>
             <li><a href="confronta.php">Confronta</a></li>
@@ -31,8 +32,6 @@ function showResult(str) {
             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
                 <!-- Se l'utente è loggato, mostra il link all'area personale e il menu a tendina -->
                 <li class="dropdown">
-        <!-- Verificare spazio -->
-                  <br>
                     <a href="javascript:void(0)" class="dropbtn">Area personale di <?php echo htmlspecialchars($_SESSION['username']); ?></a>
                     <div class="dropdown-content">
                         <a href="reserved.php">Profilo</a>

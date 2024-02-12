@@ -88,7 +88,7 @@
 
 
 <?php if (count($auto_selezionate) > 0): ?>
-    <div class="container-confronta" style="margin-top: 240px;">
+    <div class="container-confronta" style="margin-top: 220px; ">
 
     <!-- Form per selezionare l'ordine delle auto -->
     <form id="order-form" action="confronta.php" method="get">
@@ -125,7 +125,7 @@
 <?php else: ?>
     <!-- Mostra un messaggio se nessuna auto è stata selezionata -->
     <!-- Bisogna creare un container -->
-    <div class="container-confronta">
+    <div style="margin-top: 240px; margin-bottom: 40px;">
     <p class="beige-text">Nessuna auto selezionata per il confronto.</p>
     </div>
 <?php endif; ?>
