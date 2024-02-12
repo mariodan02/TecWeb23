@@ -55,7 +55,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             header('Location: https://it.wikipedia.org/wiki/Fiat_Nuova_500');
             exit;
         case 12:
-            header('Location: https://it.wikipedia.org/wiki/Pagina1');
+            header('Location: https://it.m.wikipedia.org/wiki/Lancia_Delta_(1979)');
             exit;
         case 13:
             header('Location: https://it.wikipedia.org/wiki/Citro%C3%ABn_DS');
