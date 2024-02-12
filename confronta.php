@@ -26,19 +26,16 @@
 
     </script>
 </head>
-<body>
 
+<body>
 <?php
     // Includi l'header del sito web
     include 'header.php';
-
     // Controlla se l'utente è loggato, se non è loggato reindirizza alla pagina di login
     if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] === false) {
         header('Location: login.php');
         exit;
     }
-
-    
     // Verifica se è stato richiesto di rimuovere un'auto vedi riga 22
     if (isset($_GET['rimuovi'])) {
         $idAutoDaRimuovere = intval($_GET['rimuovi']);
@@ -73,6 +70,12 @@
         
         // Esegui la query per ottenere i dettagli delle auto selezionate
         $query = "SELECT * FROM auto WHERE id IN ($ids)";
+
+        // Aggiungi l'ordinamento se specificato dall'utente
+        if (isset($_GET['ordine']) && ($_GET['ordine'] == 'crescente' || $_GET['ordine'] == 'decrescente')) {
+            $query .= " ORDER BY prezzo " . ($_GET['ordine'] == 'crescente' ? 'ASC' : 'DESC');
+        }
+
         $result = pg_query($db, $query) or die('Query failed: ' . pg_last_error());
         
         // Ottieni tutti i risultati della query come array associativo
@@ -83,8 +86,18 @@
     }
 ?>
 
+
 <?php if (count($auto_selezionate) > 0): ?>
     <div class="container-confronta">
+        <!-- Form per selezionare l'ordine delle auto -->
+    <form id="order-form" action="confronta.php" method="get">
+        <label for="ordine">Ordina per prezzo:</label>
+        <select name="ordine" id="ordine">
+            <option value="crescente">Crescente</option>
+            <option value="decrescente">Decrescente</option>
+        </select>
+        <button type="submit">Ordina</button>
+    </form>
     <?php foreach ($auto_selezionate as $auto): ?>
         <div class="card">
             <!-- Aggiunta dell'immagine dell'auto -->
@@ -113,8 +126,8 @@
     </div>
 <?php endif; ?>
 
-
 </body>
+
 <?php 
     include 'footer.php';
 ?>  
