@@ -5,8 +5,8 @@
   	<meta name="description" content="Archivio auto d'epoca"/>
   	<meta charset = "utf-8"/>
   	<link rel="icon" href="wikicar-logo.png" >
-	<link rel="stylesheet" href="homepage-style.css">
-    <link rel="stylesheet" href="headerstyle.css">
+	<link rel="stylesheet" href="css/homepage-style.css">
+    <link rel="stylesheet" href="css/headerstyle.css">
 	</head>
 	<header style="background-color:white;">
 		<?php

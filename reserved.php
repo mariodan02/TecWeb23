@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Area Riservata - WikiCar Vintage</title>
-<link rel="stylesheet" href="homepage-style.css">
-<link rel="stylesheet" href="headerstyle.css">
+<link rel="stylesheet" href="css/homepage-style.css">
+<link rel="stylesheet" href="css/headerstyle.css">
 
 <style>
 #drop_zone {

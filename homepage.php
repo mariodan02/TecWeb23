@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="homepage-style.css">
-    <link rel="stylesheet" href="headerstyle.css">
+    <link rel="stylesheet" href="css/homepage-style.css">
+    <link rel="stylesheet" href="css/headerstyle.css">
     <title>WikiCar Vintage</title>
     <link rel="icon" href="img/other-img/logo.png" type="image/x-icon">
     <link rel="shortcut icon" href="img/other-img/logo.png" type="image/x-icon">
@@ -14,7 +14,7 @@
     <?php include 'header.php'; ?>
 
     <video id="background-video" autoplay muted loop>
-        <source src="Sfondo 1.mp4" type="video/mp4">
+        <source src="img/video/Sfondo.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
