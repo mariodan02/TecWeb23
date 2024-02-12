@@ -61,8 +61,6 @@
 
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         $username = $_SESSION['username'] ?? 'user';
-        echo '<span class="beige-text">Ciao,  </span>' . '<span class="beige-text">' . htmlspecialchars($username) . '</span>' . '<span class="beige-text"> ' . '&nbsp;ecco le tue auto: </span>';
-
         // Connettiti al database
         $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
 
@@ -75,8 +73,15 @@
             // Recupera le auto associate all'utente
             $autoResult = pg_query_params($db, "SELECT a.* FROM auto a JOIN garage_auto ga ON a.id = ga.auto_id WHERE ga.garage_id = $1", array($garageId));
             if ($autoResult) {
+                
                 echo "<ul>";
+
+                if (pg_num_rows($autoResult) > 0){
+
                 echo '<div class="container">';
+
+                echo '<span class="beige-text" style="margin-left: 30px;">Ciao,  </span>' . '<span class="beige-text">' . htmlspecialchars($username) . '</span>' . '<span class="beige-text" style="margin-right: 15px;"> ' . '&nbsp;ecco le tue auto: </span>';
+
                 while ($auto = pg_fetch_assoc($autoResult)) {
 
                 echo '<div class="card">';
@@ -99,10 +104,18 @@
                 echo '</div>';
 
                 }
+
                 echo "</div>";
                 echo "</ul>";
+
+                }else{
+
+                    echo "<p class='beige-text' style='margin-left: 650px;'>Non ci sono auto nel tuo garage.</p>";
+               
+                }
+
             } else {
-                echo "<p>Non ci sono auto nel tuo garage.</p>";
+                echo "<p class='beige-text'>Non ci sono auto nel tuo garage.</p>";
             }
         } else {
             echo '<p class="beige-text" style="margin-left: 5px; margin-right: 5px;"> Garage non trovato. </p>';
