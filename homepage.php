@@ -59,12 +59,32 @@
         <?php
         require "tswdb.php";
         // Connessione al database PostgreSQL
-        $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
-
+        $db = pg_connect($connection_string);
+        if (!$db) {
+            error_log("Errore di connessione al database: " . pg_last_error()); // Registra l'errore in un log
+            echo "Errore di connessione al database."; // Mostra un messaggio generico all'utente
+            exit;
+        }
+        
         // Esecuzione della query
         $query = 'SELECT * FROM auto';
-        $result = pg_query($db, $query) or die('Query failed: ' . pg_last_error());
+        $result = pg_query($db, $query);
 
+        if (!$result) {
+            // Registra l'errore in un log per l'analisi da parte degli sviluppatori
+            error_log("Errore nell'esecuzione della query: " . pg_last_error($db));
+            
+            // Mostra un messaggio generico all'utente, senza dettagli sensibili
+            echo "Errore durante il recupero dei dati.";
+        } else {
+            // Ciclo per ogni auto
+            while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+                // Codice per gestire i dati delle auto
+            }
+        
+            // Libera la risorsa risultato
+            pg_free_result($result);
+        }
         // Ciclo per ogni auto
         while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
             echo '<div class="card">';

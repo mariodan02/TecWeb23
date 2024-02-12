@@ -7,8 +7,13 @@ $autoId = $_POST['idAuto'];
 
 try {
     // Connettiti al database
-    $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
-
+    $db = pg_connect($connection_string);
+    if (!$db) {
+        error_log("Errore di connessione al database: " . pg_last_error()); // Registra l'errore in un log
+        echo "Errore di connessione al database."; // Mostra un messaggio generico all'utente
+        exit;
+    }
+    
     // Recupera l'ID del garage basato sull'username
     $garageResult = pg_query_params($db, "SELECT id FROM garage WHERE username = $1", array($username));
     if (!$garageResult || pg_num_rows($garageResult) == 0) {

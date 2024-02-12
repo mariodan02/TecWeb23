@@ -49,8 +49,13 @@
    function get_pwd($username){
    		require "tswdb.php";
    		//CONNESSIONE AL DB
-		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
-		$sql = "SELECT password FROM utenti WHERE username=$1;";
+		   $db = pg_connect($connection_string);
+		   if (!$db) {
+			   error_log("Errore di connessione al database: " . pg_last_error()); // Registra l'errore in un log
+			   echo "Errore di connessione al database."; // Mostra un messaggio generico all'utente
+			   exit;
+		   }
+				   $sql = "SELECT password FROM utenti WHERE username=$1;";
 		$prep = pg_prepare($db, "sqlPassword", $sql);
 		$ret = pg_execute($db, "sqlPassword", array($username));
 		if(!$ret) {

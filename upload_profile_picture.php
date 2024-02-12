@@ -19,14 +19,17 @@
 
 // Verifica se l'utente è loggato
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    die("Accesso non autorizzato.");
+    echo "<script>alert('Accesso non autorizzato. Effettua il login.'); window.location.href='login.php';</script>";
+    exit;
 }
 
-// Verifichiamo che esista un ID per l'utente
+// Verifica che esista un ID per l'utente
 if (!isset($_SESSION['username'])) {
-    die("ID utente non trovato nella sessione.");
+    echo "<script>alert('ID utente non trovato nella sessione.'); window.location.href='login.php';</script>";
+    exit;
 }
 $userId = $_SESSION['username'];
+
 
 $targetDir = "uploads/"; // Directory dove verranno caricati i file
 $targetFile = $targetDir . basename($_FILES["profilePic"]["name"]);
