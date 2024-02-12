@@ -59,51 +59,38 @@
         <?php
         require "tswdb.php";
         // Connessione al database PostgreSQL
-        $db = pg_connect($connection_string);
-        if (!$db) {
-            error_log("Errore di connessione al database: " . pg_last_error()); // Registra l'errore in un log
-            echo "Errore di connessione al database."; // Mostra un messaggio generico all'utente
-            exit;
-        }
-        
+        $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
+
         // Esecuzione della query
         $query = 'SELECT * FROM auto';
-        $result = pg_query($db, $query);
+        $result = pg_query($db, $query) or die('Query failed: ' . pg_last_error());
 
-        if (!$result) {
-            // Registra l'errore in un log per l'analisi da parte degli sviluppatori
-            error_log("Errore nell'esecuzione della query: " . pg_last_error($db));
+        // Ciclo per ogni auto
+        while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+            echo '<div class="card">';
             
-            // Mostra un messaggio generico all'utente, senza dettagli sensibili
-            echo "Errore durante il recupero dei dati.";
-        } else {
-            // Ciclo per ogni auto
-            while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-                echo '<div class="card">';
-            
-                // Aggiunta dell'immagine dell'auto
-                echo '<img src="img/card-img/' . htmlspecialchars($auto['img']) . '.jpg" alt="Immagine di ' . htmlspecialchars($auto['nome']) . '">';
-    
-                // Sezione delle informazioni dell'auto
-                echo '<div class="card-info">';
-                echo '<h3>' . htmlspecialchars($auto['nome']) . '</h3>';
-                echo '<p>Anno: ' . htmlspecialchars($auto['anno']) . '</p>';
-                echo '<p>Prezzo: ' . htmlspecialchars($auto['prezzo']) . '</p>';
-                echo '</div>';
-            
-                // Pulsante Dettagli o Confronta
-                echo '<a href="dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
-                if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-                    // Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ?
-                    echo '<a href="javascript:void(0);" onclick="aggiungiAlGarage(\'' . htmlspecialchars($auto['id']). '\')" class="btn">Aggiungi al Garage</a>';
-                    echo '<a href="javascript:void(0);" onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</a>';
-                } 
-                echo '</div>';
-            }
+            // Aggiunta dell'immagine dell'auto
+            echo '<img src="img/card-img/' . htmlspecialchars($auto['img']) . '.jpg" alt="Immagine di ' . htmlspecialchars($auto['nome']) . '">';
+
+            // Sezione delle informazioni dell'auto
+            echo '<div class="card-info">';
+            echo '<h3>' . htmlspecialchars($auto['nome']) . '</h3>';
+            echo '<p>Anno: ' . htmlspecialchars($auto['anno']) . '</p>';
+            echo '<p>Prezzo: ' . htmlspecialchars($auto['prezzo']) . '</p>';
+            echo '</div>';
         
-            // Libera la risorsa risultato
-            pg_free_result($result);
-        }
+            // Pulsante Dettagli o Confronta
+            echo '<a href="dettagli.php?id=' . htmlspecialchars($auto['id']) . '" class="btn">Dettagli</a>';
+            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+                // Meglio fare <a href> oppure fare echo '<button onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</button>'; ?
+                echo '<a href="javascript:void(0);" onclick="aggiungiAlGarage(\'' . htmlspecialchars($auto['id']). '\')" class="btn">Aggiungi al Garage</a>';
+                echo '<a href="javascript:void(0);" onclick="salvaAutoConfronto(\'' . htmlspecialchars($auto['id']) . '\')" class="btn">Confronta</a>';
+            } 
+            echo '</div>';
+        }    
+
+        // Liberare il risultato
+        pg_free_result($result);
 
         // Chiudere la connessione
         pg_close($db);

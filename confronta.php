@@ -64,13 +64,8 @@
 
     // Stabilisci una connessione al database PostgreSQL
     require "tswdb.php";
-    $db = pg_connect($connection_string);
-    if (!$db) {
-        error_log("Errore di connessione al database: " . pg_last_error()); // Registra l'errore in un log
-        echo "Errore di connessione al database."; // Mostra un messaggio generico all'utente
-        exit;
-    }
-    
+    $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
+
     // Se ci sono auto selezionate, esegui una query per recuperare i loro dettagli
     if (count($auto_selezionate) > 0) {
         // Assicurati che gli ID siano numeri interi per prevenire SQL injection
@@ -78,28 +73,8 @@
         
         // Esegui la query per ottenere i dettagli delle auto selezionate
         $query = "SELECT * FROM auto WHERE id IN ($ids)";
-        $query = 'SELECT * FROM auto';
-        $result = pg_query($db, $query);
+        $result = pg_query($db, $query) or die('Query failed: ' . pg_last_error());
         
-        if (!$result) {
-            // Registra l'errore in un log per l'analisi da parte degli sviluppatori
-            error_log("Errore nell'esecuzione della query: " . pg_last_error($db));
-            
-            // Mostra un messaggio generico all'utente, senza dettagli sensibili
-            echo "Errore durante il recupero dei dati.";
-        } else {
-            // Ciclo per ogni auto
-            while ($auto = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-                // Codice per gestire i dati delle auto
-            }
-        
-            // Libera la risorsa risultato
-            pg_free_result($result);
-        }
-        
-        // Chiudi la connessione al database
-        pg_close($db);
-                
         // Ottieni tutti i risultati della query come array associativo
         $auto_selezionate = pg_fetch_all($result);
         
@@ -132,6 +107,7 @@
     </div>
 <?php else: ?>
     <!-- Mostra un messaggio se nessuna auto è stata selezionata -->
+    <!-- Bisogna creare un container -->
     <div class="container-confronta">
     <p class="beige-text">Nessuna auto selezionata per il confronto.</p>
     </div>

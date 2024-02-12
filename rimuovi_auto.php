@@ -8,13 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && is_numeric($_GE
 
     // Connessione al database
     require "tswdb.php";
-    $db = pg_connect($connection_string);
-    if (!$db) {
-        error_log("Errore di connessione al database: " . pg_last_error()); // Registra l'errore in un log
-        echo "Errore di connessione al database."; // Mostra un messaggio generico all'utente
-        exit;
-    }
-    
+    $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
+
     // Query per eliminare l'auto dal garage dell'utente corrente
     $query = "DELETE FROM garage_auto WHERE auto_id = $1 AND garage_id IN (SELECT id FROM garage WHERE username = $2)";
     $result = pg_query_params($db, $query, array($auto_id, $username));

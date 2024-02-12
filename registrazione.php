@@ -95,13 +95,8 @@
 function username_exist($username){
 	require "tswdb.php";
 	// Connessione al database
-	$db = pg_connect($connection_string);
-	if (!$db) {
-		error_log("Errore di connessione al database: " . pg_last_error()); // Registra l'errore in un log
-		echo "Errore di connessione al database."; // Mostra un messaggio generico all'utente
-		exit;
-	}
-		$sql = "SELECT username FROM utenti WHERE username=$1";
+	$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
+	$sql = "SELECT username FROM utenti WHERE username=$1";
 	$prep = pg_prepare($db, "sqlUsername", $sql);
 	$ret = pg_execute($db, "sqlUsername", array($username));
 	if(!$ret) {
@@ -120,62 +115,27 @@ function username_exist($username){
 
 
 function insert_utente($username, $email, $password){
-    require "tswdb.php";
-    
-    // Validazione dei dati in entrata
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        // Gestisci l'errore di email non valida
-        echo "Formato email non valido.";
-        return false;
-    }
-
-    if (strlen($password) < 8) {
-        // Gestisci l'errore di password troppo corta
-        echo "La password deve essere di almeno 8 caratteri.";
-        return false;
-    }
-
-    // Connessione al database
-	$db = pg_connect($connection_string);
-	if (!$db) {
-		error_log("Errore di connessione al database: " . pg_last_error()); // Registra l'errore in un log
-		echo "Errore di connessione al database."; // Mostra un messaggio generico all'utente
-		exit;
+	require "tswdb.php";
+	// Connessione al database
+	$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
+	$hash = password_hash($password, PASSWORD_DEFAULT);
+	$sql = "INSERT INTO utenti(username, email, password) VALUES($1, $2, $3)";
+	$prep = pg_prepare($db, "insertUser", $sql);
+	$ret = pg_execute($db, "insertUser", array($username,$email,$hash));
+	if(!$ret) {
+		echo "$hash ERRORE QUERY: " . pg_last_error($db);
+		return false;
 	}
-	
-    // Sanitizzazione dell'input
-    $username = pg_escape_string($db, $username);
-    $email = pg_escape_string($db, $email);
-
-    // Hashing della password
-    $hash = password_hash($password, PASSWORD_DEFAULT);
-
-    // Preparazione e esecuzione della query
-    $sql = "INSERT INTO utenti(username, email, password) VALUES($1, $2, $3)";
-    $prep = pg_prepare($db, "insertUser", $sql);
-    $ret = pg_execute($db, "insertUser", array($username, $email, $hash));
-
-    if (!$ret) {
-        // Gestisci l'errore della query senza esporre dettagli sensibili
-        error_log("Errore nell'inserimento utente: " . pg_last_error($db)); // Log dell'errore
-        echo "Errore durante la registrazione.";
-        return false;
-    } else {
-        return true;
-    }
+	else{
+		return true;
+	}
 }
-
 
 function creaGaragePerUtente($username) {
 	require "tswdb.php";
 	// Connessione al database
-	$db = pg_connect($connection_string);
-	if (!$db) {
-		error_log("Errore di connessione al database: " . pg_last_error()); // Registra l'errore in un log
-		echo "Errore di connessione al database."; // Mostra un messaggio generico all'utente
-		exit;
-	}
-		$result = pg_query_params($db, "INSERT INTO garage (username) VALUES ($1) RETURNING id", array($username));
+	$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
+    $result = pg_query_params($db, "INSERT INTO garage (username) VALUES ($1) RETURNING id", array($username));
     if ($result) {
         $row = pg_fetch_assoc($result);
         return $row['id']; // Restituisce l'ID del nuovo garage creato
