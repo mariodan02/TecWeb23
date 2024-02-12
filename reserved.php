@@ -88,7 +88,7 @@
                     echo '<div class="card-info">';
                     echo '<h3>' . htmlspecialchars($auto['nome']) . '</h3>';
                     echo '<p>Anno: ' . htmlspecialchars($auto['anno']) . '</p>';
-                    echo '<p>Prezzo: ' . htmlspecialchars($auto['prezzo']) . '</p>';
+                    echo '<p>Prezzo: ' . htmlspecialchars($auto['prezzo']) . ' €</p>';
                     echo '</div>';
                 
                     // Pulsante Dettagli
