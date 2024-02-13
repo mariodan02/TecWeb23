@@ -4,6 +4,10 @@
       "url": "registrazione.php"
     },
     {
+      "title": "Accedi",
+      "url": "login.php"
+    },
+    {
       "title": "Area Personale",
       "url": "reserved.php"
     },
