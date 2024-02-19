@@ -70,12 +70,7 @@
         
         // Esegui la query per ottenere i dettagli delle auto selezionate
         $query = "SELECT * FROM auto WHERE id IN ($ids)";
-
-        // Aggiungi l'ordinamento se specificato dall'utente
-        if (isset($_GET['ordine']) && ($_GET['ordine'] == 'crescente' || $_GET['ordine'] == 'decrescente')) {
-            $query .= " ORDER BY prezzo " . ($_GET['ordine'] == 'crescente' ? 'ASC' : 'DESC');
-        }
-
+    
         $result = pg_query($db, $query) or die('Query failed: ' . pg_last_error());
         
         // Ottieni tutti i risultati della query come array associativo
@@ -83,7 +78,17 @@
         
         // Libera la memoria tenendo i risultati della query
         pg_free_result($result);
+        
+        // Definisci la funzione di confronto in base all'ordine specificato
+        $ordine = isset($_GET['ordine']) && ($_GET['ordine'] == 'decrescente') ? -1 : 1;
+        
+        usort($auto_selezionate, function($a, $b) use ($ordine) {
+            $diff = $a['prezzo'] - $b['prezzo'];
+            return $diff * $ordine;
+        });
     }
+    
+    
 ?>
 
 
