@@ -189,8 +189,6 @@ COPY public.auto (id, nome, anno, prezzo, img) FROM stdin;
 --
 
 COPY public.garage (id, username) FROM stdin;
-1	gianni
-2	mario
 \.
 
 
@@ -199,9 +197,6 @@ COPY public.garage (id, username) FROM stdin;
 --
 
 COPY public.garage_auto (id, auto_id, garage_id) FROM stdin;
-34	1	1
-36	0	1
-37	6	1
 \.
 
 
@@ -210,9 +205,6 @@ COPY public.garage_auto (id, auto_id, garage_id) FROM stdin;
 --
 
 COPY public.utenti (username, email, password) FROM stdin;
-simone	simoneguerra2002@gmail.com	$2y$10$GmSvK3u7gSmzL5KH3Xwz5uVL4Ua3eYVMRXC46w2cuf28m78PQDppq
-gianni	gianniwar@hotmail.it	$2y$10$sUNXaZOgFWr5yklPVwZkN.s97eh6P6tKAwaic3cDr4Z35Dmngq.JK
-mario	mario@gmail.com	$2y$10$.v3rPFcLrmtXWcwZbiMhB.Kjpf9KidKUHhPOt2FfDle2XdHpdX2CC
 \.
 
 
@@ -227,7 +219,7 @@ SELECT pg_catalog.setval('public.auto_id_seq', 6, true);
 -- Name: garage-auto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www
 --
 
-SELECT pg_catalog.setval('public."garage-auto_id_seq"', 44, true);
+SELECT pg_catalog.setval('public."garage-auto_id_seq"', 46, true);
 
 
 --
@@ -250,7 +242,7 @@ ALTER TABLE ONLY public.auto
 --
 
 ALTER TABLE ONLY public.garage_auto
-    ADD CONSTRAINT "garage-auto_pkey" PRIMARY KEY (auto_id);
+    ADD CONSTRAINT "garage-auto_pkey" PRIMARY KEY (id);
 
 
 --
