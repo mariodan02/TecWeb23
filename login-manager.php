@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>WikiCar Vintage Login</title>
+	<title>WikiCar Vintage Login</title>
   	<meta name="author" content="TSW23_09"/>
   	<meta name="description" content="Archivio auto d'epoca"/>
   	<meta charset = "utf-8"/>
@@ -10,7 +10,7 @@
 	</head>
 	<header>
 		<?php
-				include 'header.php';
+			include 'header.php';
 		?>
 	</header>
 	<body>
