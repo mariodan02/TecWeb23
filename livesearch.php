@@ -30,5 +30,5 @@ if (strlen($q) > 0) {
 $response = ($hint === "") ? "no suggestion" : $hint;
 
 // Output della risposta
-echo $response;
+echo $response;  //output può essere inviato tramite echo dato che non è una risposta complessa (L'utilizzo di una richiesta GET consente questa scelta)
 ?>

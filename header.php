@@ -12,7 +12,7 @@ function showResult(str) {
   var xmlhttp=new XMLHttpRequest();
   xmlhttp.onreadystatechange=function() {
     if (this.readyState==4 && this.status==200) {
-      document.getElementById("livesearch").innerHTML=this.responseText;
+      document.getElementById("livesearch").innerHTML=this.responseText;   /*la risposta si ottiene dalla richiesta ajax al file livesearch.php che restituisce con una echo il response*/
       document.getElementById("livesearch").style.border="1px solid #A5ACB2";
     }
   }
