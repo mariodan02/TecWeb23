@@ -12,7 +12,7 @@
                 // Dividiamo il cookie in nome e valore
                 var cookie = c.trim().split("=");
                 if (cookie[0].indexOf('PHPSESSID') === -1) { // Escludi i cookie di sessione
-                    document.cookie = cookie[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; // Omettiamo 'cookie[1]' poiché stiamo cancellando il cookie  
+                    document.cookie = cookie[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; // Omettiamo 'cookie[1]' (ovvero il valore del cookie) poiché stiamo cancellando il cookie  
                 }
             });
             window.location.reload(); // Ricarica la pagina per aggiornare lo stato
