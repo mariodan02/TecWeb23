@@ -17,7 +17,7 @@ try {
         exit;
     }
     $garageRow = pg_fetch_assoc($garageResult);
-    $garageId = $garageRow['id'];
+    $garageId = $garageRow['id'];  /*colonna di garage contenente id*/
 
     // Verifichiamo che l'auto non sia già nel garage
     $result = pg_query_params($db, "SELECT * FROM garage_auto WHERE auto_id = $1 AND garage_id = $2", array($autoId, $garageId));
