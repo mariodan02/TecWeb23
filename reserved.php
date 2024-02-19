@@ -102,18 +102,12 @@
                     // Pulsante Rimuovi
                     echo '<a href="rimuovi_auto.php?id=' . htmlspecialchars($auto['id']) . '" class="btn" style="background-color: rgb(118, 0, 0)">Rimuovi</a>';
                 echo '</div>';
-
                 }
-
                 echo "</div>";
                 echo "</ul>";
-
                 }else{
-
                     echo "<p class='beige-text' style='margin-left: 610px;'>Non ci sono auto nel tuo garage.</p>";
-               
                 }
-
             } else {
                 echo "<p class='beige-text'>Non ci sono auto nel tuo garage.</p>";
             }
@@ -177,7 +171,7 @@ document.getElementById('drop_zone').addEventListener('click', function() {   //
     document.getElementById('profilePic').click();
 });
 
-document.getElementById('profilePic').addEventListener('change', function(event) {  //usato quando si seleziona il file dalla finestra di dialogo*/
+document.getElementById('profilePic').addEventListener('change', function(event) {  //usato quando si seleziona il file dalla finestra di dialogo
     processFile(event.target.files[0]);
 });
 </script>

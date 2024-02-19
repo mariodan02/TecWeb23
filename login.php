@@ -20,7 +20,6 @@
           <form id="signin-form" method="post" action="login-manager.php">
             <label for="username">Nome utente</label><br>
             <input type="text" id="username" name="username" placeholder="Inserisci il tuo nome utente"><br><br>
-            
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Inserisci la tua password">
 

@@ -52,14 +52,13 @@ if ($_FILES["profilePic"]["size"] > 500000) { // 500KB, modifica se necessario
 
 // Permetti solo alcuni formati di file
 if($imageFileType != "png") {
-    echo "<div><p style class='beige-text'>Spiacente, sono permessi solo file PNG.</p></div>";
+    echo "<div class='container-login'><p style class='beige-text'>Spiacente, sono permessi solo file PNG.</p></div>";
     $uploadOk = 0;
 }
 
-
 // Verifica se $uploadOk è impostato su 0 da un errore
 if ($uploadOk == 0) {
-    echo "<center><p style class='beige-text'>Il tuo file non é stato caricato, riprova.</p></center>";
+    echo "<div><p style class='beige-text'>Il tuo file non é stato caricato, riprova.</p></div>";
 // se tutto è ok, prova a caricare il file
 }
 else {

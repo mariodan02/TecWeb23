@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-// Verifica se è stata inviata una richiesta GET con l'ID dell'auto
+// Verifichiamo se è stata inviata una richiesta GET con l'ID dell'auto
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && is_numeric($_GET['id'])) {
     $auto_id = $_GET['id'];
     $username = $_SESSION['username'] ?? ''; // Recupera l'username dell'utente corrente

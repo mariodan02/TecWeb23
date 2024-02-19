@@ -1,22 +1,22 @@
 <?php
-// Carica il contenuto del file JSON
+// Carichiamo il contenuto del file JSON
 $json = file_get_contents("links.json");
 
-// Decodifica il JSON in un array PHP
+// Decodifichiamo il JSON in un array PHP
 $data = json_decode($json, true);
 
-// Ottieni il parametro "q" dalla query string nell'URL
+// Ottieniamo il parametro "q" dalla query string nell'URL
 $q = $_GET["q"];
 
-// Inizializza la variabile per memorizzare i suggerimenti
+// Inizializziamo la variabile per memorizzare i suggerimenti
 $hint = "";
 
-// Cerca tra i link nel JSON se la lunghezza di "q" è maggiore di 0
+// Cerchiamo tra i link nel JSON se la lunghezza di "q" è maggiore di 0
 if (strlen($q) > 0) {
     foreach ($data as $link) {
         // Verifica se il titolo del link inizia con la query fornita
         if (stripos($link['title'], $q) === 0) {
-            // Aggiungi il link ai suggerimenti
+            // Aggiungiamo il link ai suggerimenti
             if ($hint === "") {
                 $hint = "<a href='" . $link['url'] . "' target='_blank'>" . $link['title'] . "</a>";
             } else {
@@ -26,7 +26,7 @@ if (strlen($q) > 0) {
     }
 }
 
-// Se non ci sono suggerimenti, imposta la risposta a "no suggestion"
+// Se non ci sono suggerimenti, impostiamo la risposta a "no suggestion"
 $response = ($hint === "") ? "no suggestion" : $hint;
 
 // Output della risposta

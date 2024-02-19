@@ -30,9 +30,9 @@ function showResult(str) {
         <ul>
             <li><a href="homepage.php">Homepage</a></li>
             <li><a href="confronta.php">Confronta</a></li>
-            <!-- Verifica se l'utente è loggato -->
+            <!-- Verifichiamo se l'utente è loggato -->
             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
-                <!-- Se l'utente è loggato, mostra il link all'area personale e il menu a tendina -->
+                <!-- Se l'utente è loggato, mostriamo il link all'area personale e il menu a tendina -->
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">Area personale di <?php echo htmlspecialchars($_SESSION['username']); ?></a>
                     <div class="dropdown-content">
@@ -44,20 +44,16 @@ function showResult(str) {
                   <?php
                     $username = htmlspecialchars($_SESSION['username']);
                     $fileBase = "uploads/" . $username;
-
-                    if (file_exists($fileBase . ".jpg")) {
-                        echo '<img src="' . $fileBase . '.jpg" alt="" class="personal-area-icon">';
-                    } elseif (file_exists($fileBase . ".png")) {
+                    if (file_exists($fileBase . ".png")) {
                         echo '<img src="' . $fileBase . '.png" alt="" class="personal-area-icon">';
-                    } elseif (file_exists($fileBase . ".gif")) {
-                        echo '<img src="' . $fileBase . '.gif" alt="" class="personal-area-icon">';
-                    } else {
-                        echo '<img src="user.png" alt="" class="personal-area-icon">';
+                      }
+                    else{
+                      echo '<img src="user.png" alt="" class="personal-area-icon">';
                     }
                   ?>
                 </li>
             <?php else: ?>
-                <!-- Se l'utente non è loggato, mostra il link per creare un account -->
+                <!-- Se l'utente non è loggato, mostriamo il link per creare un account -->
                 <li><a href="registrazione.php">Registrati</a></li>
             <?php endif; ?>
             <li><input type="text" size="30" onkeyup="showResult(this.value)" class="textf-head"> <div id="livesearch"></div> </li>

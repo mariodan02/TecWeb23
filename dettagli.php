@@ -13,7 +13,7 @@
 <body>
 <?php include 'header.php'; ?>
 <?php
-// Controlla se l'ID è presente nella query string e se è numerico
+// Controlliamo se l'ID è presente nella query string e se è numerico
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $autoId = $_GET['id'];
 

@@ -26,7 +26,6 @@
 			$password = $_POST['password'];
 		else
 			$password = "";
-
 		//Si controlla la presenza di username duplicati
 		if (!empty($password)){
 			if(username_exist($username)){ // Richiama la funzione username_exist($username)
@@ -43,7 +42,6 @@
 					exit();
 					if ($garageId === false) {
     				echo "error: Impossibile creare un garage per l'utente.";
-    				// Gestire l'errore 
 					}
 				}
 				else{
@@ -155,8 +153,6 @@ function insert_utente($username, $email, $password){
     } else {
         return true;
     }
-
-
 }
 
 function creaGaragePerUtente($username) {
@@ -171,6 +167,5 @@ function creaGaragePerUtente($username) {
         return false; // La creazione del garage è fallita
     }
 }
-
 ?>
 
