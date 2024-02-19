@@ -109,7 +109,6 @@
     </div>
 <?php else: ?>
     <!-- Mostra un messaggio se nessuna auto è stata selezionata -->
-    <!-- Bisogna creare un container -->
     <div style="margin-top: 240px; margin-bottom: 40px;">
     <p class="beige-text">Nessuna auto selezionata per il confronto.</p>
     </div>
