@@ -173,11 +173,11 @@ function processFile(file) {
     reader.readAsDataURL(file);
 }
 
-document.getElementById('drop_zone').addEventListener('click', function() {
+document.getElementById('drop_zone').addEventListener('click', function() {   //usato per simulare il click sull'elemento di tipo file profilePic che risulta hidden (quindi non cliccabile)
     document.getElementById('profilePic').click();
 });
 
-document.getElementById('profilePic').addEventListener('change', function(event) {
+document.getElementById('profilePic').addEventListener('change', function(event) {  //usato quando si seleziona il file dalla finestra di dialogo*/
     processFile(event.target.files[0]);
 });
 </script>

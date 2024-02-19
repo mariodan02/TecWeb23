@@ -23,7 +23,9 @@ function showResult(str) {
 
 <header>   
     <nav>
+        <a href="homepage.php">
         <img src="img/other-img/logo_bianco.png" alt="logo">
+        </a>
         <div class="menu"></div>
         <ul>
             <li><a href="homepage.php">Homepage</a></li>
