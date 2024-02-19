@@ -110,7 +110,7 @@
 
                 }else{
 
-                    echo "<p class='beige-text' style='margin-left: 650px;'>Non ci sono auto nel tuo garage.</p>";
+                    echo "<p class='beige-text' style='margin-left: 610px;'>Non ci sono auto nel tuo garage.</p>";
                
                 }
 
