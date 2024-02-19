@@ -7,21 +7,15 @@
     <link rel="stylesheet" href="css/headerstyle.css">
     <script>
         function clearCookies() {
+        // Dividiamo la stringa dei cookie in un array e iteriamo su ciascun cookie
             document.cookie.split(";").forEach(function(c) {
+                // Dividiamo il cookie in nome e valore
                 var cookie = c.trim().split("=");
                 if (cookie[0].indexOf('PHPSESSID') === -1) { // Escludi i cookie di sessione
-                    document.cookie = cookie[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                    document.cookie = cookie[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; // Omettiamo 'cookie[1]' poiché stiamo cancellando il cookie  
                 }
             });
             window.location.reload(); // Ricarica la pagina per aggiornare lo stato
-        }
-
-        function rimuoviAuto(idAuto) {
-            var confirmed = confirm("Sei sicuro di voler rimuovere questa auto?");
-            if (confirmed) {
-                // Invia una richiesta GET alla pagina corrente con un parametro speciale per la rimozione -> rimuovi=idAuto
-                window.location.href = "?rimuovi=" + idAuto;
-            }
         }
 
     </script>

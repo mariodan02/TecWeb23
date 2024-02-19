@@ -2,11 +2,11 @@
 session_start();
 require "tswdb.php";
 
-$username = $_SESSION['username']; // Assicurati che l'username sia impostato nella sessione
+$username = $_SESSION['username']; // L'username è impostato durante il login
 $autoId = $_POST['idAuto'];
 
 try {
-    // Connettiti al database
+    // Connessione al database
     $db = pg_connect($connection_string) or die('Impossibile connettersi al database: ' . pg_last_error());
 
     // Recupera l'ID del garage basato sull'username
