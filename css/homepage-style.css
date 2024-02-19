@@ -181,11 +181,11 @@ section {padding: 2em;}
 
 .container-reserved-auto {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; /*se ci fosse stato center avremmo avuto problemi col testo che non era visibile per intero*/
     align-items: center;
     padding: 10px;
-    overflow-x: auto;
-    white-space: nowrap;
+    overflow-x: auto; /*per gestire la barra di scorrimento*/
+    white-space: nowrap; /*il testo non va a capo*/
 }
 
 .container-reserved-auto::-webkit-scrollbar {
