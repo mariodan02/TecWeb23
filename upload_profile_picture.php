@@ -39,27 +39,27 @@ if(isset($_POST["submit"])) {
     if($check !== false) {
         $uploadOk = 1;
     } else {
-        echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p>Il file caricato non é un'immagine.</p></center>";
+        echo "<div class='container-login'><p style class='beige-text'>Il file caricato non é un'immagine.</p></div>";
         $uploadOk = 0;
     }
 }
 
 // Verifica la dimensione del file
 if ($_FILES["profilePic"]["size"] > 500000) { // 500KB, modifica se necessario
-    echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p>Spiacente, il tuo file é troppo grande.</p></center>";
+    echo "<div class='container-login'><p style class='beige-text'>Spiacente, il tuo file é troppo grande.</p></div>";
     $uploadOk = 0;
 }
 
 // Permetti solo alcuni formati di file
 if($imageFileType != "png") {
-    echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p>Spiacente, sono permessi solo file PNG.</p></center>";
+    echo "<div><p style class='beige-text'>Spiacente, sono permessi solo file PNG.</p></div>";
     $uploadOk = 0;
 }
 
 
 // Verifica se $uploadOk è impostato su 0 da un errore
 if ($uploadOk == 0) {
-    echo "<center><p>Il tuo file non é stato caricato, riprova.</p></center>";
+    echo "<center><p style class='beige-text'>Il tuo file non é stato caricato, riprova.</p></center>";
 // se tutto è ok, prova a caricare il file
 }
 else {
@@ -69,7 +69,7 @@ else {
 
     // Sposta il file caricato nella cartella di destinazione con il nuovo nome.
     if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $targetFile)) {
-        echo "<br><br><br><br><br><br><br><br><br><br><br><br><center><p style class='beige-text'>La tua foto profilo è stata caricata con successo.</p></center>";
+        echo "<div class='container-login'><p style class='beige-text'>La tua foto profilo è stata caricata con successo.</p></div>";
         echo "<br><center><p><a href='homepage.php'>Torna alla homepage</a>" . "</p></center>";
         } else {
         echo "<Si è verificato un errore durante il caricamento del tuo file.";
@@ -79,7 +79,7 @@ else {
 ?>
 
 </body>
-	<br><br><br><br>
+	<br><br>
 	<footer style="background-color:white;">
 		<?php
         	include 'footer.php';

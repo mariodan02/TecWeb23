@@ -157,6 +157,13 @@ section {padding: 2em;}
     padding: 20px;
 }
 
+.container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 220px;
+}
+
 .container-confronta {
     display:flex;
     justify-content: center;
