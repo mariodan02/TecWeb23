@@ -16,10 +16,12 @@
 			$username = $_POST['username'];
 		else
 			$username = "";
-  	if(isset($_POST['email']))
+
+  		if(isset($_POST['email']))
     	$email = $_POST['email'];
-  	else
+  		else
     	$email = "";
+	
 		if(isset($_POST['password']))
 			$password = $_POST['password'];
 		else

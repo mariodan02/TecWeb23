@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/homepage-style.css">
     <link rel="stylesheet" href="css/headerstyle.css">
 	</head>
-	<header style="background-color:white;">
+	<header>
 		<?php
 				include 'header.php';
 		?>
