@@ -124,7 +124,13 @@
         pg_close($db);
 
     } else {
-        echo "<font color=beige> Non riusciamo a riconoscerti! Effettua l'</font> <a href='login.php' style='margin-left: 5px; margin-right: 5px;'> accesso </a> <font color=beige> se sei già registrato o </font> <a href='registrazione.php' style='margin-left: 5px; margin-right: 5px;'> registrati </a> <font color=beige> se è la prima volta che vieni a trovarci! </font>";
+        echo '<p class="beige-text" style="margin-top: 150px; margin-left: 25px;">';
+        echo "<font color=beige> Non riusciamo a riconoscerti! Effettua l'</font>";
+        echo "<a href='login.php' style='margin-left: 5px; margin-right: 5px;'> accesso </a>";
+        echo "<font color=beige> se sei già registrato o </font>";
+        echo "<a href='registrazione.php' style='margin-left: 5px; margin-right: 5px;'> registrati </a>";
+        echo "<font color=beige> se è la prima volta che vieni a trovarci! </font>";
+        echo "</p>";   
     }
     ?>
 
