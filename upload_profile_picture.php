@@ -34,7 +34,8 @@ $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
 
 // Verifica se il file caricato è un'immagine effettiva
-if(isset($_POST["submit"])) {
+if(isset($_FILES["profilePic"]["tmp_name"]) && !empty($_FILES["profilePic"]["tmp_name"]))  {
+    // Controllo se il file è stato caricato correttamente
     $check = getimagesize($_FILES["profilePic"]["tmp_name"]);
     if($check !== false) {
         $uploadOk = 1;
@@ -42,6 +43,9 @@ if(isset($_POST["submit"])) {
         echo "<div class='container-login'><p style class='beige-text'>Il file caricato non é un'immagine.</p></div>";
         $uploadOk = 0;
     }
+}else{
+    echo "<div class='container-login'><p style class='beige-text'>Non è stata caricata alcuna immagine!</p></div>";
+    echo "<br><center><a href='reserved.php'> Torna all'area riservata </a>";
 }
 
 // Verifica la dimensione del file
@@ -51,14 +55,15 @@ if ($_FILES["profilePic"]["size"] > 500000) { // 500KB, modifica se necessario
 }
 
 // Permetti solo alcuni formati di file
-if($imageFileType != "png") {
-    echo "<div class='container-login'><p style class='beige-text'>Spiacente, sono permessi solo file PNG.</p></div>";
+if($imageFileType != "png" && !empty($_FILES["profilePic"]["tmp_name"])) {
+    echo "<div><p style class='beige-text'>Spiacente, sono permessi solo file PNG.</p></div>";
     $uploadOk = 0;
 }
 
 // Verifica se $uploadOk è impostato su 0 da un errore
 if ($uploadOk == 0) {
     echo "<div><p style class='beige-text'>Il tuo file non é stato caricato, riprova.</p></div>";
+    echo "<br><center><a href='reserved.php'> Torna all'area riservata </a>";
 // se tutto è ok, prova a caricare il file
 }
 else {
