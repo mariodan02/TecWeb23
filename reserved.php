@@ -156,15 +156,15 @@ function dropHandler(ev) {  //funzione rilascio del file nella zona destinazione
 
 function processFile(file) {   //il file selezionato o trascinato viene letto e adattato al contenitore
     var reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function(e) { //onload quando il file è completamente caricato
         var img = document.createElement("img");
-        img.src = e.target.result;      //e.target.result è l'URL dell'immagine
+        img.src = e.target.result;      //e.target.result è l'URL dell'immagine, in quanto il target che ha scatenato l'evento è il fileReader che produce come risultato l'URL dell'immagine(il target result si ottiene dopo la lettura effettiva)
         img.style.maxWidth = "200px";
         img.style.maxHeight = "200px";
         document.getElementById('drop_zone').innerHTML = '';
         document.getElementById('drop_zone').appendChild(img); //immagine inserita nel contenitore come elemento figlio
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file); //messa alla fine per garantire che la lettura del file avvenga effettivamente solo dopo che sono state eseguite le altre istruzioni
 }
 
 document.getElementById('drop_zone').addEventListener('click', function() {   //usato per simulare il click sull'elemento di tipo file profilePic che risulta hidden (quindi non cliccabile)
