@@ -42,7 +42,7 @@ nav li a {
 nav li a:hover {background-color: #fdf4dc; color: #221711;}
 
 #livesearch {
-  position: absolute;
+  position: absolute;  /*posizione iniziale che si basa sull'elemento padre <li> (textfield)*/
   top: 90%; /* Posiziona il livesearch sotto il textfield */
   width: 250px;
   z-index: 1;
@@ -50,8 +50,8 @@ nav li a:hover {background-color: #fdf4dc; color: #221711;}
 }
 
 #livesearch a {
-  padding: 5px; /* Esempio di padding ridotto */
-  font-size: 15px; /* Esempio di dimensioni del carattere ridotte */
+  padding: 5px; /* padding ridotto */
+  font-size: 15px; 
   color: #fdf4dc;
   font-weight: bold;
   margin-bottom: 2px;
@@ -59,8 +59,8 @@ nav li a:hover {background-color: #fdf4dc; color: #221711;}
 }
 
 #livesearch a:last-child {
-  padding: 5px; /* Esempio di padding ridotto */
-  font-size: 15px; /* Esempio di dimensioni del carattere ridotte */
+  padding: 5px; 
+  font-size: 15px; 
   color: #fdf4dc;
   font-weight: bold;
   display: block;
@@ -93,7 +93,7 @@ nav li a:hover {background-color: #fdf4dc; color: #221711;}
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    transform: translateX(45px) translateY(10px);
+    transform: translateX(45px) translateY(10px); /*traslato rispetto al contenitore padre (l'inizio dell'elemento di tipo <li> Area Personale)*/
   }
   
   /* Links all'interno del menu a tendina */
