@@ -13,13 +13,13 @@ header {
 }
 
 nav {
-  background-color: transparent;
   display:inline-block;
   overflow: hidden;
   margin: 0;
   margin-top: 10px;
   margin-bottom: 0;
   padding: 10px;
+  /*avremmo potuto inserire height 300px per garantire che il contenuto del menu a tendina e della barra di ricerca sia visibile(caso in cui nav li fosse con position relative) -> in questo caso però il menu a tendina dovrebbe rientrare nel div e quindi non sarebbero cliccabil gli elementi inferiori*/
 }
 
 header img{
@@ -31,7 +31,7 @@ header img{
 }
 
 nav ul {list-style: none; padding: 0;margin: 0;}
-nav li {display: inline-block; margin-right: 20px;}
+nav li {display: inline-block; margin-right: 20px;}  /*possibile pos relative vedi riga 23*/
 nav li:last-child {margin-right: 0;}
 nav li a {
   padding: 10px;
@@ -42,7 +42,7 @@ nav li a {
 nav li a:hover {background-color: #fdf4dc; color: #221711;}
 
 #livesearch {
-  position: absolute;  /*posizione iniziale che si basa sull'elemento padre <li> (textfield)*/
+  position: absolute;  /*posizione iniziale che si basa sull'elemento padre <li> (textfield) , avremmo potuto anche non dare posizione relative a li (avremmo avuto header come riferimento)*/
   top: 90%; /* Posiziona il livesearch sotto il textfield */
   width: 250px;
   z-index: 1;
@@ -125,16 +125,7 @@ nav li a:hover {background-color: #fdf4dc; color: #221711;}
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Aggiunge ombra */
 }
 
-menu ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
 
-menu ul li {
-  display: inline-block;
-  margin-right: 10px; /* Aggiungi spazio tra gli elementi */
-}
 
 .personal-area-icon {
   position: relative; /* Aggiungi posizionamento relativo */
