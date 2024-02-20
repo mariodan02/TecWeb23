@@ -41,6 +41,14 @@ nav li a {
 }
 nav li a:hover {background-color: #fdf4dc; color: #221711;}
 
+#livesearch {
+  position: absolute;
+  top: 90%; /* Posiziona il livesearch sotto il textfield */
+  width: 250px;
+  z-index: 1;
+  background-color: rgba(34, 23, 17, 0.8);;
+}
+
 #livesearch a {
   padding: 5px; /* Esempio di padding ridotto */
   font-size: 15px; /* Esempio di dimensioni del carattere ridotte */
