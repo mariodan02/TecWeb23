@@ -140,7 +140,7 @@
 
 <script>
 function dragOverHandler(ev) {  //funzione di trascinamento del file
-    ev.preventDefault();
+    ev.preventDefault(); //previene funzionamento di default
     ev.currentTarget.classList.add('dragover');
 }
 
