@@ -139,30 +139,30 @@
 ?>
 
 <script>
-function dragOverHandler(ev) {
-    ev.preventDefault();
+function dragOverHandler(ev) {  //funzione di trascinamento del file
+    ev.preventDefault(); //previene funzionamento di default
     ev.currentTarget.classList.add('dragover');
 }
 
-function dragLeaveHandler(ev) {
+function dragLeaveHandler(ev) { //funzione rilascio del file in una zona diversa da quella di destinazione
     ev.currentTarget.classList.remove('dragover');
 }
 
-function dropHandler(ev) {
+function dropHandler(ev) {  //funzione rilascio del file nella zona destinazione
     ev.preventDefault();
     ev.currentTarget.classList.remove('dragover');
     processFile(ev.dataTransfer.files[0]);
 }
 
-function processFile(file) {
+function processFile(file) {   //il file selezionato o trascinato viene letto e adattato al contenitore
     var reader = new FileReader();
     reader.onload = function(e) {
         var img = document.createElement("img");
-        img.src = e.target.result;
+        img.src = e.target.result;      //e.target.result è l'URL dell'immagine
         img.style.maxWidth = "200px";
         img.style.maxHeight = "200px";
         document.getElementById('drop_zone').innerHTML = '';
-        document.getElementById('drop_zone').appendChild(img);
+        document.getElementById('drop_zone').appendChild(img); //immagine inserita nel contenitore come elemento figlio
     };
     reader.readAsDataURL(file);
 }

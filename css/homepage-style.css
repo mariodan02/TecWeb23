@@ -43,8 +43,8 @@ section {padding: 2em;}
 #lista-auto {
     display: flex;
     flex-wrap: wrap;  /*gli elementi figli vanno a capo*/
-    justify-content: space-around;
-    align-items: stretch;
+    justify-content: space-around; /*distribuzione spazi all'inizio e alla fine del contenitore*/
+    align-items: stretch; /*gli elementi figli vengono allungati per occupare tutto l'asse verticale del contenitore*/
 }
 
 .card:hover {
