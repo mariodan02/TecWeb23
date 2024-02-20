@@ -59,13 +59,13 @@
         <form id="signup-form" method="post" action="registrazione.php" onsubmit="return validateFormSignUp()">
 
             <label for="username">Nome utente</label>
-            <input type="text" id="username" name="username" placeholder="Inserisci il tuo nome utente"><br>
+            <input type="text" id="username" name="username" placeholder="Inserisci il tuo nome utente" required><br>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Inserisci il tuo indirizzo email">
+            <input type="email" id="email" name="email" placeholder="Inserisci il tuo indirizzo email" required>
 
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Inserisci la tua password">
+            <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required>
 
               <div class="checkbox">
                 <input type="checkbox" id="agree" name="agree">
