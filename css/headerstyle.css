@@ -41,6 +41,28 @@ nav li a {
 }
 nav li a:hover {background-color: #fdf4dc; color: #221711;}
 
+#livesearch a {
+  padding: 5px; /* Esempio di padding ridotto */
+  font-size: 15px; /* Esempio di dimensioni del carattere ridotte */
+  color: #fdf4dc;
+  font-weight: bold;
+  margin-bottom: 2px;
+  display: block;
+}
+
+#livesearch a:last-child {
+  padding: 5px; /* Esempio di padding ridotto */
+  font-size: 15px; /* Esempio di dimensioni del carattere ridotte */
+  color: #fdf4dc;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0px;
+}
+
+#livesearch a:hover {
+  background-color:  #fdf4dc; color: #221711;
+}
+
 .dropdown {
     display: inline-block;
   }

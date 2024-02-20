@@ -29,11 +29,11 @@
 						$_SESSION['username']=$username;
 						header('Location: homepage.php'); 
 					} else {
-						echo '<br><br><center>Username o password errati. <a href="login.php">Riprova</a>';
+						echo '<div class="container-login"><p style class=beige-text> Username o password errati. <a href="login.php">Riprova</a></p></div>';
 					}
 				}
 			} else{
-				echo "<br><br><center><p>ERRORE: username o password non inseriti <a href=\"login.php\">Riprova</a></p>";
+				echo "<div class='container-login'><p style class=beige-text>ERRORE: username o password non inseriti <a href=\"login.php\">Riprova</a></p></div>";
 				exit();
 			}
 		?>

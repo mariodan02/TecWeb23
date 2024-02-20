@@ -20,7 +20,7 @@ if (strlen($q) > 0) {
             if ($hint === "") {
                 $hint = "<a href='" . $link['url'] . "' target='_blank'>" . $link['title'] . "</a>";
             } else {
-                $hint .= "<br /><a href='" . $link['url'] . "' target='_blank'>" . $link['title'] . "</a>";
+                $hint .= "<a href='" . $link['url'] . "' target='_blank'>" . $link['title'] . "</a>";
             }
         }
     }
