@@ -27,6 +27,8 @@
 						//Se il login è corretto, inizializziamo la sessione
 						$_SESSION['logged_in'] = true;
 						$_SESSION['username']=$username;
+						$_SESSION['email']=$email;
+						$_SESSION['password']=$password;
 						header('Location: homepage.php'); 
 					} else {
 						echo '<div class="container-login"><p style class=beige-text> Username o password errati. <a href="login.php">Riprova</a></p></div>';

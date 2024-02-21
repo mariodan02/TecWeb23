@@ -7,6 +7,20 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/headerstyle.css">
 <script src="inputValidation.js"></script>
+<script>
+function togglePasswordVisibility() {
+  var passwordField = document.getElementById("password");
+  var visibilityToggle = document.getElementById("toggle-password");
+
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    visibilityToggle.textContent = "Nascondi";
+  } else {
+    passwordField.type = "password";
+    visibilityToggle.textContent = "Mostra";
+  }
+}
+</script>
 </head>
 <?php
         include 'header.php';
@@ -38,6 +52,7 @@
 					$garageId = creaGaragePerUtente($username);
 					$_SESSION['username'] = $username;
 					$_SESSION['email'] = $email;
+					$_SESSION['password'] = $password;
 					$_SESSION['logged_in'] = true;
 					header('Location: homepage.php'); 
 					exit();
@@ -66,7 +81,8 @@
             <input type="email" id="email" name="email" placeholder="Inserisci il tuo indirizzo email" value="<?php echo isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : ''; ?>" required>
 
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required>
+            <input type="password" id="password" name="password" placeholder="Inserisci la tua password" value="<?php echo isset($_SESSION['password']) ? htmlspecialchars($_SESSION['password']) : ''; ?>" required>
+			<button type="button" id="toggle-password" onclick="togglePasswordVisibility()" style="background-color:beige; border-radius:4px; border-color:gray">Mostra</button>
 
               <div class="checkbox">
                 <input type="checkbox" id="agree" name="agree">
