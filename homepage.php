@@ -135,7 +135,7 @@
         var valoreCookie = idAuto;
         var scadenza = new Date();
         scadenza.setTime(scadenza.getTime() + (60 * 60 * 1000)); // 1 ora
-        document.cookie = nomeCookie + "=" + valoreCookie + ";expires=" + scadenza.toUTCString() + ";path=/";
+        document.cookie = nomeCookie + "=" + valoreCookie + ";expires=" + scadenza.toUTCString() + ";path=/"; /*ogni cookie aggiunto verrà concatenato tramite questa riga I COOKIE CON NOMI DIVERSI NON VENGONO SOVRASCRITTI/PERSI*/
         alert('Auto aggiunta al confronto!'); // Messaggio di conferma
     }
 

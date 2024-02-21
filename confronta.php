@@ -8,9 +8,9 @@
     <script>
         function clearCookies() {
         // Dividiamo la stringa dei cookie in un array e iteriamo su ciascun cookie
-            document.cookie.split(";").forEach(function(c) {
+            document.cookie.split(";").forEach(function(c) {  /*c rappresenta la sottostringa ottenuta dalla divisione della stringa dei cookie cookie=val; cookie2=valore2... */
                 // Dividiamo il cookie in nome e valore
-                var cookie = c.trim().split("=");
+                var cookie = c.trim().split("="); /*trim per togliere spazi e split per dividere la stringa in due sottostringhe "chiave" = "valore" */
                 if (cookie[0].indexOf('PHPSESSID') === -1) { // Escludi i cookie di sessione
                     document.cookie = cookie[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; // Omettiamo 'cookie[1]' (ovvero il valore del cookie) poiché stiamo cancellando il cookie  
                 }
