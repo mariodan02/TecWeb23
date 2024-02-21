@@ -27,7 +27,7 @@
 						//Se il login è corretto, inizializziamo la sessione
 						$_SESSION['logged_in'] = true;
 						$_SESSION['username']=$username;
-						$_SESSION['email']=$email;
+						$_SESSION['email']= get_email($username);
 						$_SESSION['password']=$password;
 						header('Location: homepage.php'); 
 					} else {
@@ -47,6 +47,30 @@
     	?>
 		</footer>
 </html>
+
+<?php
+   function get_email($username){
+   		require "tswdb.php";
+   		//CONNESSIONE AL DB
+		$db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
+		$sql = "SELECT email FROM utenti WHERE username=$1;";
+		$prep = pg_prepare($db, "sqlEmail", $sql);
+		$ret = pg_execute($db, "sqlEmail", array($username));
+		if(!$ret) {
+			echo "ERRORE QUERY: " . pg_last_error($db);
+			return false;
+		}
+		else{
+			if ($row = pg_fetch_assoc($ret)){
+				$email = $row['email'];
+				return $email;
+			}
+			else{
+				return false;
+			}
+   		}
+   	}
+?>
 
 <?php
    function get_pwd($username){
