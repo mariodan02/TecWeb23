@@ -75,7 +75,7 @@ nav li a:hover {background-color: #fdf4dc; color: #221711;}
     display: inline-block;
   }
   
-  .dropdown .dropbtn {
+  .dropdown .dropbtn {  /*poteva essere specificato un tipo all'inizio che poteva essere associato ad entrambe le classi. ES: <div class="classe1 classe2"></div>*/
     cursor: pointer;
     font-size: 16px;  
     border: none;
