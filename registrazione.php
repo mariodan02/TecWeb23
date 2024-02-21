@@ -37,6 +37,7 @@
 					echo "<script type=\"text/javascript\"> alert(\"Utente registrato con successo. Effettua il login\");</script>";
 					$garageId = creaGaragePerUtente($username);
 					$_SESSION['username'] = $username;
+					$_SESSION['email'] = $email;
 					$_SESSION['logged_in'] = true;
 					header('Location: homepage.php'); 
 					exit();
@@ -59,10 +60,10 @@
         <form id="signup-form" method="post" action="registrazione.php" onsubmit="return validateFormSignUp()">
 
             <label for="username">Nome utente</label>
-            <input type="text" id="username" name="username" placeholder="Inserisci il tuo nome utente" required><br>
+            <input type="text" id="username" name="username" placeholder="Inserisci il tuo nome utente" value="<?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : ''; ?>" required><br>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Inserisci il tuo indirizzo email" required>
+            <input type="email" id="email" name="email" placeholder="Inserisci il tuo indirizzo email" value="<?php echo isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : ''; ?>" required>
 
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required>
